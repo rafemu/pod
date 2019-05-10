@@ -5,6 +5,9 @@ Tired of monthly user subscriptions ? Well, POD is an open source software that 
 
 ![alt text](https://image.ibb.co/dQo3KK/pid_56_copy.jpg)
 
+## Demo
+[View Demo](https://pod.zweck.io/)
+Link broken? Please [inform us](https://pod.zweck.io/)
 
 ## Contributing
 We are planning to incorporate more features, feel free to ping if you would like to contribute
