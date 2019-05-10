@@ -15,8 +15,9 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
-
-* **Sharan Mohandas** - *Initial work* - [PurpleBooth](https://github.com/sharan-zweck)
+* **Zweck Infotech Pvt Ltd.** - *Funding* - [Visit Website](http://zweck.io/)
+* **Sharan Mohandas** - *Architecture and Cloud Functions* - [View Profile](https://github.com/sharan-zweck)
+* **Harsha B** - *Angular Development* - [View Profile](https://github.com/harsha-zweck)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
