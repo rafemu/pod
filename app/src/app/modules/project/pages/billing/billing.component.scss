@@ -1,0 +1,15 @@
+@import './../../../../../theme';
+.invoices-col {
+    border-right: 1px solid #ccc;
+    .media {
+        .fa-file-invoice {
+            color: $primary;
+            font-size: 32px;
+        }
+        .media-body {
+            p {
+                color: #aaa;
+            }
+        }
+    }
+}

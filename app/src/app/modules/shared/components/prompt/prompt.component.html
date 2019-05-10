@@ -1,0 +1,8 @@
+<div mat-dialog-content>
+  <p class="mb-0">Sure to leave?</p>
+  <small>Any unsaved information will be lost</small>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-sm btn-danger" [mat-dialog-close]="true">Yes, leave</button>
+  <button class="btn btn-sm btn-success ml-1" [mat-dialog-close]="false" cdkFocusInitial>No, stay</button>
+</div>

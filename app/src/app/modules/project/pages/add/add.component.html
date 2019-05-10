@@ -1,0 +1,199 @@
+<div class="row">
+  <div class="col-6">
+    <h1 class="my-4">
+      Add a project
+      <!-- <small>(12)</small> -->
+    </h1>
+  </div>
+  <div class="col-6">
+    <button
+      routerLink="/project/list"
+      class="btn btn-sm btn-danger float-right mt-5"
+    >
+      Back to Projects
+    </button>
+  </div>
+</div>
+
+<hr />
+<form
+  [formGroup]="addProjectForm"
+  #form="ngForm"
+  (submit)="createProject(form)"
+>
+  <div class="row justify-content-center mt-3">
+    <div class="col-5">
+      <h4>Description</h4>
+      <p>
+        Let the project memebers know what this is about. You can always change
+        this later
+      </p>
+    </div>
+    <div class="col-7">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="What's the project name?"
+          formControlName="title"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="A catchy caption maybe"
+          formControlName="caption"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="A long description maybe (Optional)"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-5">
+      <h4>People</h4>
+      <p>
+        You can also add users later. Administrators will have access by
+        default.
+      </p>
+    </div>
+    <div class="col-7">
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userFilter"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Filter..."
+        />
+      </mat-form-field>
+
+      <div class="people-avatar-container">
+        <figure
+          *ngFor="let person of (employees | filter: 'firstName':userFilter)"
+          class="user-badge"
+          (click)="addPerson(person.uId)"
+        >
+          <i
+            *ngIf="
+              addProjectForm.value['people'] != null
+                ? addProjectForm.value['people'].indexOf(person.uId) > -1
+                : false
+            "
+            class="fas fa-check-circle"
+          ></i>
+          <img title="Sunny Leone" [appUserAvatar]="person.uId" />
+          <p class="text-center mt-1">
+            {{ person.firstName || person.surName }}
+          </p>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5"><h4>Features</h4></div>
+    <div class="col-7">
+      <!-- <section formGroupName="features">
+        <mat-checkbox formControlName="tasks">Tasks</mat-checkbox>
+        <mat-checkbox formControlName="messaging">Messaging</mat-checkbox>
+        <mat-checkbox formControlName="files">Files</mat-checkbox>
+        <mat-checkbox formControlName="comments">Comments</mat-checkbox>
+        <mat-checkbox formControlName="billing">Billing</mat-checkbox>
+      </section> -->
+
+      <!-- <hr> -->
+
+      <section>
+        <h5>Tags</h5>
+        <p class="mb-2">
+          <small> Note : Click on the tag to remove it </small>
+        </p>
+        <div>
+          <span
+            class="badge badge-success"
+            *ngFor="let tag of addProjectForm.value['tags']"
+            (click)="removeTag(tag)"
+            >{{ tag }}</span
+          >
+        </div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Eg : mysql"
+            [(ngModel)]="tagName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+        <button
+          class="btn btn-sm btn-success"
+          type="button"
+          (click)="addTags()"
+        >
+          Add Tags
+        </button>
+      </section>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5 pr-4">
+      <h4>Dates (Optional)</h4>
+      <p>
+        Adding a start and end date provides your team a useful way to see the
+        duration of this project which helps with planning your tasks and
+        milestones
+      </p>
+    </div>
+    <div class="col-7">
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="startPicker"
+          placeholder="Start date"
+          formControlName="startDate"
+          readonly
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="endPicker"
+          placeholder="End date"
+          formControlName="endDate"
+          readonlyasdjh
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-12">
+      <button routerLink="/project/add" class="btn btn-sm btn-outline-success">
+        Add Project
+      </button>
+    </div>
+  </div>
+</form>

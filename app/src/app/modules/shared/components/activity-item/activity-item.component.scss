@@ -1,0 +1,25 @@
+@import './../../../../../theme';
+
+.activity-wrapper {
+  img {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-right: 10px;
+    border: 1px solid $secondary;
+  }
+  p {
+    display: inline-block;
+    .activity-type {
+      margin: 0 5px;
+      text-transform: lowercase;
+    }
+  }
+  
+}
+
+.time {
+  font-size: 70%;
+}

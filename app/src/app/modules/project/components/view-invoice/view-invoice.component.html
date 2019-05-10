@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-6">
+    <p>Invoice No. / ID</p>
+    <p>Issue Date</p>
+    <p>Notes</p>
+  </div>
+  <div class="col-6">
+    <h2 class="text-center mt-5">INVOICE</h2>
+  </div>
+</div>
+
+<hr>
+<h5>BILLABLE TIME</h5>
+<table class="table">
+  <tbody>
+    <tr *ngFor="let log of logs">
+      <th scope="row">1</th>
+      <td>{{ (log.date.seconds | amFromUnix) | amDateFormat:'LL'}}</td>
+      <td>
+        <p [appUserName]="log.userId"></p>
+      </td>
+      <td>{{log.description}}</td>
+      <td class="text-right">{{log.time.toFixed(2)}} hours</td>
+      <td>{{log.currency}}</td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr *ngIf="subTotal">
+      <td colspan="4"></td>
+      <td>
+        <p class="text-right" *ngIf="subTotal"><strong>Sub-Total:</strong> {{subTotal.billableTime}} hours</p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<hr>
+
+<h5>Expenses</h5>
+No expenses added on this Invoice
+
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <button class="btn btn-sm btn-outline-primary mr-4" [matMenuTriggerFor]="menu">Export</button>
+    <mat-menu #menu="matMenu" xPosition="after" overlapTrigger="false" yPosition="above">
+      <a mat-menu-item><i class="fas fa-file-pdf mr-2"></i> PDF</a>
+      <a mat-menu-item><i class="fas fa-file-excel mr-2"></i> Excel</a>
+    </mat-menu>
+    <mat-checkbox>Mark as Complete</mat-checkbox>
+  </div>
+  <div class="col-md-6">
+    <h2 class="text-right">Total : USD 20.00</h2>
+  </div>
+</div>

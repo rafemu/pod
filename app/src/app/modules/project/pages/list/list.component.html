@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col-6">
+    <h1 class="my-4">
+      <span class="text-capitalize">{{ status }}</span> Projects
+      <small>({{ projects.length }})</small>
+    </h1>
+  </div>
+  <div class="col-6">
+    <a
+      routerLink="/project/add"
+      class="btn btn-sm btn-primary float-right mt-5"
+    >
+      <i class="fas fa-plus mr-2"></i>
+      Add Project
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/project/list/active"
+          >Active</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/project/list/archived"
+          >Archived</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-7 col-sm-12">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"
+          >Search for a Project</span
+        >
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Start typing..."
+        [(ngModel)]="term"
+      />
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Sort</label>
+      </div>
+      <select class="form-control" [(ngModel)]="sort">
+        <option value="lastUpdated">Latest Activity</option>
+        <option value="title">Project Name</option>
+        <option value="createdAt">Date Created</option>
+      </select>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          (click)="orderDesc = !orderDesc"
+          type="button"
+        >
+          <i
+            class="fas"
+            [ngClass]="orderDesc ? 'fa-sort-down' : 'fa-sort-up'"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-1 col-sm-12">
+    <div class="btn-group float-right" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        [ngClass]="view == 'list' ? 'btn-primary' : 'btn-secondary'"
+        (click)="setView('list')"
+        class="btn"
+      >
+        <i class="fas fa-list"></i>
+      </button>
+      <button
+        type="button"
+        [ngClass]="view == 'grid' ? 'btn-primary' : 'btn-secondary'"
+        (click)="setView('grid')"
+        class="btn"
+      >
+        <i class="fas fa-th"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row" *ngIf="view == 'list'">
+  <div class="col-12">
+    <app-project-item
+      *ngFor="
+        let project of (projects
+          | filter: 'title':term
+          | projectSort: sort:orderDesc)
+      "
+      [project]="project"
+    >
+    </app-project-item>
+  </div>
+</div>
+
+<div class="row" *ngIf="view == 'grid'">
+  <div
+    class="col-md-3 col-sm-12"
+    *ngFor="
+      let project of (projects
+        | filter: 'title':term
+        | projectSort: sort:orderDesc)
+    "
+  >
+    <app-project-grid-item [project]="project"></app-project-grid-item>
+  </div>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="row" *ngIf="!loading && projects.length == 0">
+  <div class="col-md-12 col-sm-12">
+    <p class="text-center">Aww! No projects here</p>
+  </div>
+</div>

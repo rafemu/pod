@@ -1,0 +1,21 @@
+img {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 25px;
+  border: 1px solid;
+}
+
+.tags {
+  margin-bottom: 1rem;
+  span {
+    margin-right: 5px;
+  }
+}
+
+.time-statistics {
+  font-size: 13px;
+  span {
+    margin-right: 10px;
+  }
+}

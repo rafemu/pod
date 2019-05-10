@@ -1,0 +1,47 @@
+<section class="center-aligned">
+  <mat-card>
+    <img mat-card-image src="/assets/splash.png" alt="Authentix Logo">
+
+    <form [formGroup]="registerForm" #form="ngForm" (submit)="submitRegister(form)">
+
+      <mat-form-field>
+        <input matInput type="email" placeholder="Email" formControlName="email">
+        <mat-error *ngIf="registerForm.controls['email'].errors?.email && !registerForm.controls['email'].errors?.required">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].errors?.required">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="fullName" placeholder="Full Name">
+        <mat-error *ngIf="registerForm.controls['fullName'].errors?.required">
+          Full Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" formControlName="password" placeholder="Password">
+        <mat-error *ngIf="registerForm.controls['password'].errors?.required">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+        <mat-error *ngIf="registerForm.controls['password'].errors?.required">
+          Confirm Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="isRegisterProgress" type="submit" mat-raised-button>
+        {{isRegisterProgress ? 'Registering...' :'Register'}}
+      </button>
+    </form>
+    <mat-card-footer>
+      <a routerLink="/auth/login">Back to Login</a>
+      <a routerLink="/auth/reset-password">Reset Password</a>
+    </mat-card-footer>
+  </mat-card>
+</section>

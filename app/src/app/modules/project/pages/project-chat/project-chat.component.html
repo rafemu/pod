@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-12 chat-container" #chatContainer>
+    <div class="pt-4">
+      <div class="media mb-2" *ngFor="let message of messages">
+        <img
+          [appUserAvatar]="message.userId"
+          height="48"
+          width="48"
+          class="mr-3"
+        />
+        <div class="media-body">
+          <p class="my-0">
+            <small>
+              <span [appUserName]="message.userId"></span>,
+              <span>{{
+                message.createdAt.seconds | amFromUnix | amTimeAgo
+              }}</span>
+            </small>
+          </p>
+          <p>
+            {{ message.message }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="empty-wrapper" *ngIf="!messages.length">
+      <h4>
+        <i class="fas fa-drum"></i>
+      </h4>
+      <p>No messages in here. Break the silence</p>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<!-- <div class="row">
+    <div class="col-12">
+      <emoji-mart
+        *ngIf="showEmoji"
+        emojiTooltip="false"
+        (emojiSelect)="emojiSelected($event)"
+        title="Pick your emoji…"
+        emoji="point_up"
+        isNative="true"
+        showPreview="false"
+      ></emoji-mart>
+      <form
+        [formGroup]="sendMessageForm"
+        #form="ngForm"
+        (submit)="sendMessage(form)"
+      >
+        <div class="input-group">
+          <input
+            class="form-control"
+            formControlName="message"
+            placeholder="Type a message"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              (click)="showEmoji = !showEmoji"
+              type="button"
+            >
+              😀
+            </button>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> -->
+
+<div class="row">
+  <div class="col-12">
+    <emoji-mart
+      *ngIf="showEmoji"
+      emojiTooltip="false"
+      (emojiSelect)="emojiSelected($event)"
+      title="Pick your emoji…"
+      emoji="point_up"
+      isNative="true"
+      showPreview="false"
+    ></emoji-mart>
+    <form #form="ngForm" [formGroup]="chatForm" (submit)="sendMessage(form)">
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="message"
+          placeholder="Type a message here"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="showEmoji = !showEmoji"
+            type="button"
+          >
+            😀
+          </button>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

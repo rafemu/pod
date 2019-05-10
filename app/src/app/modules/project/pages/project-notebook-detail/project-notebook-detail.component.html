@@ -1,0 +1,47 @@
+<section *ngIf="notebook">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h3 class="underlined">{{ notebook.title }}</h3>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+  <div class="col-6">
+    <p class="mb-0">
+      <small>Created by Sharan Mohandas on Sep 3, 2017</small>
+    </p>
+  </div>
+  <div class="col-6">
+    <p class="text-right mb-0">
+      <small>Last updated by Harsha B on Oct 2, 2018</small>
+    </p>
+  </div>
+</div> -->
+
+  <hr />
+  <div class="row" *ngIf="notebook.description">
+    <div class="col-8 description-container">
+      <div [innerHTML]="notebook.description"></div>
+    </div>
+    <div class="col-4">
+      <p><strong>Owner : </strong><span [appUserName]="notebook.userId"></span></p>
+      <p><strong>Created : </strong>{{(notebook.createdAt.seconds | amFromUnix)| amDateFormat : 'lll'}}</p>
+      <p>
+        <strong>Updated : </strong>
+        {{(notebook.lastUpdatedAt.seconds | amFromUnix)| amDateFormat : 'lll'}}
+      </p>
+      <hr />
+
+
+
+
+      <h6 class="underlined mb-4">Visible to</h6>
+      <div *ngIf="notebook.people" class="people-avatar-container">
+        <figure (click)="addOrRemovePerson(user)" class="user-badge" *ngFor="let user of notebook.people">
+          <img [appUserAvatar]="user" />
+          <p [appUserName]="user" class="text-center mt-1"></p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

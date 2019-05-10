@@ -1,0 +1,16 @@
+<td width="13%">{{ (log.date.seconds | amFromUnix) | amDateFormat:'LL'}}</td>
+<td [appUserName]="log.userId" width="10%"></td>
+<td width="35%">{{log.description || 'No description provided'}}</td>
+<td width="8%">{{log.from}}</td>
+<td width="8%">{{log.to}}</td>
+<td width="6%" class="text-center">
+  <i (click)="toggleBillable()" class="fas" [ngClass]="log.isBillable === true ? 'fa-check-circle' : 'fa-times-circle'"></i>
+</td>
+<td width="6%" class="text-center">
+  <i class="fas" [ngClass]="log.invoiceId ? 'fa-check-circle' : 'fa-times-circle'"></i>
+</td>
+
+<td width="10%">{{total | number:'1.2-2' }} Hours</td>
+<td width="7%" class="edit-coloumn text-center">
+  <i (click)="editTime()" class="far fa-edit"></i>
+</td>

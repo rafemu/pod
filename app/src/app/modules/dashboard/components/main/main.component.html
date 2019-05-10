@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="my-4">Dashboard
+      </h1>
+    </div>
+
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a routerLink="/dashboard/activity" routerLinkActive="active" class="nav-link">Activity</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link">My Tasks</a>
+        </li> -->
+        <li class="nav-item">
+          <a routerLink="/dashboard/chat" routerLinkActive="active" class="nav-link">My Chats
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

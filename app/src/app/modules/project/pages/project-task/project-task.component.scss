@@ -1,0 +1,20 @@
+@import './../../../../../theme';
+
+mat-form-field {
+  width: 100%;
+  textarea {
+    min-height: 80px;
+  }
+}
+
+.no-time {
+  //   border-bottom: 1px solid #ddd;
+}
+
+.add-file {
+  color: $primary !important;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}

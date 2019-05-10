@@ -1,0 +1,29 @@
+<div class="row justify-content-between">
+  <div class="col-10">
+    <div class="activity-wrapper">
+      <img [routerLink]="['people/profile',activity.userId]" [appUserAvatar]="activity.userId" src="/assets/user.png">
+      <p class="mb-0">
+        <a [routerLink]="['people/profile',activity.userId]" [appUserName]="activity.userId" class="user-link"></a>
+        <span class="activity-type">{{activity.action}} a {{activity.model}} :</span>
+
+        <ng-container [ngSwitch]="activity.model">
+          <a *ngSwitchCase="'Task'" [routerLink]="['/project/manage', projectId, 'tasks', activity.modelId]"
+            appTaskName [taskId]="activity.modelId" [projectId]="projectId" class="target-link"></a>
+          <a *ngSwitchCase="'Comment'" [routerLink]="['/project/manage', projectId, 'tasks', activity.modelId]"
+            appTaskName [taskId]="activity.modelId" [projectId]="projectId" class="target-link"></a>
+          <a *ngSwitchCase="'Notebook'" [routerLink]="['/project/manage', projectId, 'diaries', activity.modelId]"
+            appNotebookName [taskId]="activity.modelId" [projectId]="projectId" class="target-link"></a>
+          <a *ngSwitchCase="'File'" [routerLink]="['/project/manage', projectId, 'files']" class="target-link">View</a>
+        </ng-container>
+
+      </p>
+    </div>
+  </div>
+  <div class="col-2">
+    <p class="text-right mb-0">
+      <small class="time">
+        {{(activity.createdAt.seconds | amFromUnix)| amCalendar}}
+      </small>
+    </p>
+  </div>
+</div>

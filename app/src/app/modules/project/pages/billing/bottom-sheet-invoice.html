@@ -1,0 +1,10 @@
+<mat-nav-list>
+  <!-- <a mat-list-item (click)="createInvoice($event)">
+    <span mat-line></span>
+    <span mat-line>Add to a note</span>
+  </a> -->
+  <a *ngFor="let invoice of invoices" mat-list-item (click)="moveToInvoice(invoice)">
+    <span mat-line></span>
+    <span mat-line>{{invoice.invoiceId}}</span>
+  </a>
+</mat-nav-list>

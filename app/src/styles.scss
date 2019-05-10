@@ -1,0 +1,244 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+@import './theme';
+$custom-typography: mat-typography-config( $font-family: 'Coda');
+@include mat-core($custom-typography);
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-green, 700, 800, 900);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    font-family: 'Coda', cursive;
+    h1 {
+        font-weight: 600;
+    }
+    a {
+        color: $primary;
+        &:hover {
+            color: $secondary;
+            text-decoration: none;
+        }
+    }
+}
+
+.underlined {
+    position: relative;
+    margin-bottom: 25px;
+    color: $primary;
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        width: 35px;
+        height: 2px;
+        background: $primary;
+    }
+}
+
+section.center-aligned {
+    display: grid;
+    width: 400px;
+    margin: auto;
+    mat-card {
+        margin-top: 70px;
+        mat-form-field {
+            width: 100%;
+        }
+        mat-card-footer {
+            display: grid;
+            padding: 25px 0;
+            grid-template-columns: 50% 50%;
+            a {
+                font-size: 12px;
+                text-decoration: none;
+                text-align: right;
+                padding: 0 10px;
+                &:last-child {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+.container-fluid {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #000;
+    .nav-item {
+        .nav-link {
+            border-bottom-color: #000;
+            color: #000;
+            &.active {
+                color: $primary;
+                border-color: $secondary #000 #fff;
+            }
+        }
+    }
+}
+
+.input-group {
+    .input-group-text {
+        color: #fff;
+        background-color: #000;
+        border: none;
+    }
+}
+
+.btn-primary {
+    background-color: $primary;
+    border: none;
+    &:hover {
+        background-color: $secondary;
+    }
+}
+
+.form-control {
+    &:focus {
+        box-shadow: none;
+        border-color: $secondary;
+    }
+}
+
+.badge-primary {
+    background-color: $secondary;
+}
+
+figure.user-badge {
+    max-width: 64px;
+    position: relative;
+    display: inline-block;
+    margin-right: 25px;
+    i {
+        color: green;
+        position: absolute;
+        right: 5px;
+        cursor: pointer;
+    }
+    img {
+        border-radius: 32px;
+        width: 64px;
+        height: 64px;
+        border: 1px solid $secondary;
+        object-fit: cover;
+    }
+    p {
+        line-height: 1;
+    }
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+.animated {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient( to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%); // background-size: 800px 104px;
+    // height: 96px;
+    position: relative;
+}
+
+#custom-scrollbar::-webkit-scrollbar-track {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+#custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+}
+
+#custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 5px;
+}
+
+.custom-scrollbar {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #f5f5f5;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #bbb;
+        border-radius: 5px;
+    }
+}
+
+.avatar {
+    height: 64px;
+    width: 64px;
+    border-radius: 32px;
+    object-fit: cover;
+    border: 1px solid $secondary;
+}
+
+.timepicker__header {
+    background-color: $secondary !important;
+}
+
+.timepicker__main-content {
+    .clock-face__number {
+        span.active {
+            background-color: $secondary !important;
+        }
+    }
+    .timepicker-button {
+        color: $primary !important;
+    }
+    .clock-face__clock-hand {
+        background-color: $secondary !important;
+        &:after {
+            background-color: $secondary !important;
+        }
+    }
+    .clock-face__clock-hand_minute {
+        &:before {
+            border-color: $secondary !important;
+        }
+    } // .clock-face__clock-hand:after {
+    // }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.empty-wrapper {
+    text-align: center;
+    margin-top: 3rem !important;
+    h4 {
+        color: $secondary;
+        font-size: 84px;
+    }
+    p {}
+}

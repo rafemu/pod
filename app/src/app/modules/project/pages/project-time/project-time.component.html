@@ -1,0 +1,191 @@
+<div class="row mb-4">
+  <div class="col-6">
+    <h3 class="my-4 underlined">Time</h3>
+  </div>
+  <div class="col-6">
+    <!-- <a class="btn btn-sm btn-primary float-right mt-3" href="">Edit Task</a> -->
+    <button
+      class="btn btn-sm btn-success float-right mt-3"
+      (click)="createPDF()"
+    >
+      <i class="fas fa-file-pdf mr-1"></i>
+      Generate Report
+    </button>
+  </div>
+  <!-- <div class="col-12">
+    <p>Filter</p>
+  </div> -->
+</div>
+
+<form [formGroup]="sortTimeForm" #form="ngForm" (submit)="getTime()">
+  <div class="form-row">
+    <div class="col-md-2">
+      <mat-form-field>
+        <mat-label>Billable</mat-label>
+        <mat-select formControlName="billableOrNot">
+          <mat-option value="both">Both</mat-option>
+          <mat-option [value]="true">Billable only</mat-option>
+          <mat-option [value]="false">Non Billable only</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <mat-label>Users</mat-label>
+        <mat-select
+          [(ngModel)]="users"
+          [ngModelOptions]="{ standalone: true }"
+          multiple
+        >
+          <mat-option *ngFor="let user of projectUsers" [value]="user.userId">
+            <span [appUserName]="user.userId"></span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-2">
+      <mat-form-field class="w-100">
+        <input
+          formControlName="startDate"
+          matInput
+          [matDatepicker]="startPicker"
+          placeholder="Start Date (Optional)"
+          readonly
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <!-- <div class="input-group">
+        <input
+          type="text"
+          [matDatepicker]="startPicker"
+          class="form-control"
+          formControlName="startDate"
+          placeholder="(Optional)"
+          readonly
+        />
+        <mat-datepicker #startPicker></mat-datepicker>
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="startPicker.open()"
+          >
+            <i class="far fa-calendar-alt mr-1"></i>
+            <span>Start Date</span>
+          </button>
+        </div>
+      </div> -->
+
+      <!-- <mat-form-field>
+        <input matInput [matDatepicker]="startPicker" placeholder="Start date" formControlName="startDate" readonly>
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field> -->
+    </div>
+    <div class="col-md-2">
+      <mat-form-field class="w-100">
+        <input
+          formControlName="endDate"
+          matInput
+          [matDatepicker]="endPicker"
+          placeholder="End Date (Optional)"
+          readonly
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+      <!-- <div class="input-group">
+        <input
+          type="text"
+          [matDatepicker]="endPicker"
+          class="form-control"
+          placeholder="(Optional)"
+          formControlName="endDate"
+          readonly
+        />
+        <mat-datepicker #endPicker></mat-datepicker>
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="endPicker.open()"
+          >
+            <i class="far fa-calendar-alt mr-1"></i>
+            <span>End Date</span>
+          </button>
+        </div>
+      </div> -->
+
+      <!-- <mat-form-field>
+        <input matInput [matDatepicker]="endPicker" placeholder="End date" formControlName="endDate" readonly>
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field> -->
+    </div>
+    <div class="col-md-3">
+      <button
+        class="btn btn-md btn-half btn-outline-secondary submit-button mr-1"
+        (click)="clearForm(form)"
+        type="button"
+      >
+        Clear
+      </button>
+      <button
+        class="btn btn-md btn-half btn-outline-success submit-button"
+        type="submit"
+      >
+        Filter
+      </button>
+    </div>
+  </div>
+</form>
+
+<hr />
+
+<div class="row" *ngIf="time">
+  <div class="col-md-12">
+    <!-- <h4 class="underlined">Time Logs</h4> -->
+    <div class="row">
+      <div class="col-4">
+        <p>Total Logged : {{ time.totalTime }} Hours</p>
+      </div>
+      <div class="col-4">
+        <p>Billable : {{ time.billableTime }} Hours</p>
+      </div>
+      <div class="col-4">
+        <p>Non Billable : {{ time.nonBillabletime }} Hours</p>
+      </div>
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Person</th>
+          <th scope="col">Description</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th scope="col">Billable</th>
+          <th scope="col">Invoiced</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="timeLogs.length == 0">
+          <td colspan="9">
+            <p class="text-center">No time logs yet</p>
+          </td>
+        </tr>
+        <tr app-time-log-item *ngFor="let log of timeLogs | projectSort: 'date' : true" [log]="log"></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

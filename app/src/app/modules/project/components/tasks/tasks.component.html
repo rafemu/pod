@@ -1,0 +1,133 @@
+<div class="testimonial-group">
+  <div class="row" id="custom-scrollbar">
+    <div class="col-xs-4">
+      <div
+        mwlDroppable
+        (drop)="droppedOnToDo($event)"
+        dragActiveClass="drag-active"
+        class="p-3 lane"
+      >
+        <h3 class="text-center my-3">Todo</h3>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search for a task..."
+          [(ngModel)]="todoQuery"
+        />
+        <hr />
+        <section>
+          <div
+            *ngFor="let task of (todo | filter: 'title':todoQuery)"
+            class="card"
+            mwlDraggable
+            [dropData]="task"
+          >
+            <ng-container
+              *ngTemplateOutlet="taskTemplate; context: { $implicit: task }"
+            ></ng-container>
+
+            <!-- <div class="card-body">
+          <p class="title">{{task.title}}</p>
+          <a [routerLink]="['/project/manage', projectId ,'tasks', task.id]" class="card-link">Open</a>
+        </div> -->
+          </div>
+        </section>
+      </div>
+    </div>
+    <!--
+  -->
+    <div class="col-xs-4">
+      <div
+        mwlDroppable
+        (drop)="droppedOnDoing($event)"
+        dragOverClass="drop-over-active"
+        class="p-3 lane"
+      >
+        <h3 class="text-center my-3">Doing</h3>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search for a task..."
+          [(ngModel)]="doingQuery"
+        />
+        <hr />
+
+        <section>
+          <div
+            *ngFor="let task of (doing | filter: 'title':doingQuery)"
+            class="card"
+            mwlDraggable
+            [dropData]="task"
+          >
+            <ng-container
+              *ngTemplateOutlet="taskTemplate; context: { $implicit: task }"
+            ></ng-container>
+
+            <!-- <div class="card-body">
+          <p class="title">{{task.title}}</p>
+          <a [routerLink]="['/project/manage', projectId ,'tasks', task.id]" class="card-link">Open</a>
+        </div> -->
+          </div>
+        </section>
+      </div>
+    </div>
+    <!--
+  -->
+    <div class="col-xs-4">
+      <div
+        mwlDroppable
+        (drop)="droppedOnCompleted($event)"
+        dragOverClass="drop-over-active"
+        class="p-3 lane"
+      >
+        <h3 class="text-center my-3">Completed</h3>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search for a task..."
+          [(ngModel)]="completedQuery"
+        />
+        <hr />
+
+        <section>
+          <div
+            *ngFor="let task of (completed | filter: 'title':completedQuery)"
+            class="card"
+            mwlDraggable
+            [dropData]="task"
+          >
+            <ng-container
+              *ngTemplateOutlet="taskTemplate; context: { $implicit: task }"
+            ></ng-container>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!--
+  -->
+    <div class="col-xs-4">
+      <div class="p-3 lane add-column">
+        <h3 class="text-center my-3">+ Add New Lane</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #taskTemplate let-task>
+  <div class="card-body">
+    <p class="title mb-1">{{ task.title }}</p>
+    <p *ngIf="task.people" class="mb-0 text-muted">
+      <small>Assigned to {{ task.people.length }} people</small>
+    </p>
+    <p *ngIf="task.deadline" class="deadline my-1">
+      Deadline :
+      {{ task.deadline.seconds | amFromUnix | amDateFormat: 'LL' }}
+    </p>
+    <a
+      [routerLink]="['/project/manage', projectId, 'tasks', task.id]"
+      class="card-link"
+      >Open</a
+    >
+  </div>
+</ng-template>

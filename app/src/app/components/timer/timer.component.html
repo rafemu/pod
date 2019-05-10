@@ -1,0 +1,43 @@
+<section>
+  <p class="title p-3 mb-0">
+    <span>A cloud function...</span>
+    <span>{{ timer }}</span>
+    <i
+      *ngIf="state == 'expanded'"
+      class="fas fa-arrow-circle-down"
+      (click)="state = 'condensed'"
+    ></i>
+    <i
+      *ngIf="state == 'condensed'"
+      class="fas fa-arrow-circle-up"
+      (click)="state = 'expanded'"
+    ></i>
+  </p>
+
+  <div class="p-3" [hidden]="state == 'condensed'">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea rows="5" matInput></textarea>
+    </mat-form-field>
+
+    <div class="action-panel">
+      <div>
+        <button
+          (click)="toggleTimer()"
+          [ngClass]="
+            isPaused == true ? 'btn-outline-secondary' : 'btn-outline-primary'
+          "
+          class="btn mr-2"
+        >
+          <i
+            [ngClass]="isPaused == true ? 'fa-play' : 'fa-pause'"
+            class="fas"
+          ></i>
+        </button>
+        <button class="btn btn-primary">Log</button>
+      </div>
+
+      <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+    </div>
+  </div>
+</section>

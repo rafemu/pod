@@ -1,0 +1,46 @@
+<div class="row mt-4">
+  <div class="col-6">
+    <h3 class="underlined">Files</h3>
+  </div>
+  <div class="col-6">
+    <button (click)="addFile()" class="btn btn-sm btn-primary float-right">Add Files</button>
+  </div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-12">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let file of projectFiles">
+        <div>
+          <p class="mb-1 file-name">
+            <i class="far fa-file mr-2"></i>
+            {{file.name}}
+          </p>
+          <p class="mb-0 meta">Uploaded by
+            <span [appUserName]="file.userId"></span>
+            <span>, {{(file.createdAt.seconds | amFromUnix)| amTimeAgo}}</span>
+          </p>
+        </div>
+
+        <div>
+          <a [href]="file.downloadURL | async" target="_blank" class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-cloud-download-alt mr-1"></i>
+            <span>Download</span>
+          </a>
+        </div>
+
+      </li>
+    </ul>
+
+    <div class="empty-wrapper" *ngIf="projectFiles.length == 0">
+      <h4>
+        <i class="fas fa-file-upload"></i>
+      </h4>
+      <p class="text-center">There are no files on this project yet. Start with adding the first file.</p>
+    </div>
+
+  </div>
+</div>

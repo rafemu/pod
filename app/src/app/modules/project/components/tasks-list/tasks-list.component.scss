@@ -1,0 +1,46 @@
+@import './../../../../../theme';
+.mark-completed {
+    cursor: pointer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+.d-flex {
+    .add-estimate {
+        display: none;
+    }
+    &:hover {
+        >.add-estimate {
+            display: inline-block;
+        }
+    }
+}
+
+.name-badge {
+    background-color: #262A2D;
+    color: white;
+    padding: 5px 20px;
+    margin-right: 0.5rem;
+}
+
+.icon-wrapper {
+    display: inline-block;
+    margin-left: 10px;
+    i {
+        margin: 7px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #aaa;
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.progress-wrapper {
+    width: 100%;
+    mat-slider {
+        width: 100%;
+    }
+}

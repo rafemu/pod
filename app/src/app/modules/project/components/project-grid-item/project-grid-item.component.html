@@ -1,0 +1,27 @@
+<div class="card mb-2">
+  <img
+    class="card-img-top"
+    [src]="project.projectImage || '/assets/project-profile.png'"
+    alt="Card image cap"
+  />
+  <div class="card-body">
+    <h5 class="card-title">
+      <a [routerLink]="['/project/manage', project.id]">{{ project.title }}</a>
+    </h5>
+    <p class="card-text mb-0">{{ project.caption }}</p>
+    <div class="tags">
+      <span *ngFor="let tag of project.tags" class="badge badge-primary mr-1">{{
+        tag
+      }}</span>
+    </div>
+    <p class="card-text mt-1">
+      <small *ngIf="project.lastActivityAt" class="text-muted"
+        >Last activity
+        {{ project.lastActivityAt.seconds | amFromUnix | amTimeAgo }}</small
+      >
+      <small *ngIf="!project.lastActivityAt" class="text-muted"
+        >No activity yet</small
+      >
+    </p>
+  </div>
+</div>

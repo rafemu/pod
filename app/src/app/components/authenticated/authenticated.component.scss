@@ -1,0 +1,14 @@
+section {
+  max-height: 80%;
+  overflow-y: auto;
+  width: 400px;
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  border: 1px solid black;
+  app-timer {
+    // border-bottom: 1px solid black;
+  }
+}

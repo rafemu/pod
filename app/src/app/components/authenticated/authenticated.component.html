@@ -1,0 +1,7 @@
+<section *ngIf="timers.length > 0" class="custom-scrollbar">
+  <app-timer
+    *ngFor="let timer of timers; let i = index"
+    [index]="i"
+  ></app-timer>
+</section>
+<router-outlet></router-outlet>

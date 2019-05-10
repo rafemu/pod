@@ -1,0 +1,30 @@
+@import './../../../../../theme';
+
+.row {
+  margin-bottom: 25px;
+}
+
+.title-wrapper {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  h4 {
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 0px;
+    a {
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  i {
+    color: black;
+  }
+}
+
+.empty {
+  img {
+    height: 100px;
+  }
+}

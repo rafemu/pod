@@ -1,0 +1,28 @@
+@import './../../../../../theme';
+
+.chat-container {
+  // min-height: 500px;
+  height: 65vh;
+  overflow-y: scroll;
+  .media {
+    border-bottom: 1px solid #eee;
+    img {
+      border-radius: 24px;
+      border: 1px solid $secondary;
+      object-fit: cover;
+    }
+    small {
+      color: $secondary;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+
+emoji-mart {
+  position: absolute;
+  right: 75px;
+  bottom: 40px;
+}

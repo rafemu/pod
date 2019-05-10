@@ -1,0 +1,33 @@
+<mat-toolbar class="navbar">
+  <a class="navbar-brand" routerLink="/">
+    <img src="/assets/logo.png" height="50" alt="" />
+  </a>
+  <a class="nav-link d-none d-md-block" routerLinkActive="active" routerLink="/dashboard">dashboard</a>
+  <a class="nav-link d-none d-md-block" routerLinkActive="active" routerLink="/project">projects</a>
+  <a class="nav-link d-none d-md-block coming-soon" routerLinkActive="active" routerLink="/calendar">calendar
+    <span class="badge badge-pill badge-warning ml-0">soon</span>
+  </a>
+  <a class="nav-link d-none d-md-block" routerLinkActive="active" routerLink="/people">people</a>
+  <a class="nav-link d-none d-md-block" routerLinkActive="active" routerLink="/dashboard/chat">chats</a>
+
+  <span class="example-spacer"></span>
+  <a class="menu-hamburger d-md-none" (click)="openBottomSheet()">
+    <i class="fas fa-bars"></i>
+  </a>
+  <img class="avatar" [appUserAvatar]="userId">
+  <a [matMenuTriggerFor]="menu" class="nav-link"><i class="fas fa-chevron-circle-down"></i></a>
+  <mat-menu #menu="matMenu" overlapTrigger="false">
+    <h4 class="mb-0 text-center" disabled="true" mat-menu-item [appUserName]="userId"></h4>
+    <mat-divider></mat-divider>
+    <a routerLink="/settings/update-profile" mat-menu-item>
+      <i class="far fa-user-circle mr-1"></i>
+      edit profile
+    </a>
+    <a routerLinkActive="active" (click)="signOut()" mat-menu-item>
+      <i class="fas fa-sign-out-alt mr-1"></i>
+      signout
+    </a>
+  </mat-menu>
+</mat-toolbar>
+
+<!-- <app-timer></app-timer> -->

@@ -1,0 +1,30 @@
+.loading-placeholder {
+  .title {
+    width: 200px;
+    height: 30px;
+    margin-bottom: 15px;
+  }
+  .caption {
+    width: 350px;
+    height: 20px;
+    margin-bottom: 35px;
+  }
+  .description {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 10px;
+  }
+  .two {
+    animation-duration: 4s;
+    width: 25%;
+    margin-bottom: 25px;
+  }
+  .created {
+    width: 75px;
+    height: 12px;
+    animation-duration: 5s;
+  }
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}

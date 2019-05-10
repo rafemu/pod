@@ -1,0 +1,16 @@
+@import './../../../../../theme';
+
+
+section {
+    width: 350px;
+    z-index: 100;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: white;
+    border: 1px solid black;
+    .header {
+        background-color: $secondary;
+        color: white;
+    }
+}

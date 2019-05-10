@@ -1,0 +1,45 @@
+<div *ngFor="let project of projects" class="row">
+  <div
+    class="title-wrapper col-12 d-flex justify-content-between align-items-center"
+  >
+    <h4>
+      <a
+        [appProjectName]="project.projectId"
+        [routerLink]="['/project/manage', project.projectId]"
+      ></a>
+    </h4>
+    <i
+      (click)="project.expanded = !project.expanded"
+      class="fas clickable"
+      [matTooltip]="project.expanded ? 'Collapse' : 'Expand'"
+      [ngClass]="
+        project.expanded ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'
+      "
+    ></i>
+  </div>
+  <div class="col-12" *ngIf="project.expanded == true" [@slideInOut]>
+    <ul class="list-group list-group-flush">
+      <p class="my-3 ml-4" *ngIf="project.activities.length == 0">
+        No activities till now
+      </p>
+      <li
+        class="list-group-item activity-item"
+        *ngFor="let activity of project.activities"
+      >
+        <app-activity-item
+          [activity]="activity"
+          [projectId]="project.projectId"
+        ></app-activity-item>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="empty pt-5" *ngIf="projects.length == 0">
+  <img
+    src="/assets/icons/robot-design.svg"
+    class="mx-auto my-auto d-block"
+    alt=""
+  />
+  <h5 class="text-center mt-4">Aww! No projects here</h5>
+</div>

@@ -1,0 +1,54 @@
+.tasks-container {
+    border-left: 1px solid #ccc;
+    ul {
+        li {
+            section {
+                display: inline-block;
+                span {
+                    margin-left: 10px;
+                    font-size: 12px;
+                    color: #aaa;
+                }
+            }
+            i {
+                color: green;
+                cursor: pointer;
+                display: none;
+            }
+            &:hover {
+                i {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+.task-list {
+    li {
+        a {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+            &.selected {
+                color: green;
+                font-weight: 700;
+                text-decoration: underline;
+            }
+        }
+        .badge {
+            padding: 5px 10px;
+        }
+    }
+}
+
+.empty-tasklist {
+    i {
+        font-size: 80px;
+    }
+}
+
+.right-top-action {
+    margin-top: 20px;
+}

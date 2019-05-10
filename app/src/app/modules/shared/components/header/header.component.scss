@@ -1,0 +1,53 @@
+@import './../../../../../theme';
+.navbar {
+    background-color: #fff;
+    height: 80px;
+    box-shadow: 0 0 5px 0 #b4b4b4;
+    border-top: 5px solid $primary;
+    z-index: 999 !important;
+}
+
+.menu-hamburger {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    color: $secondary;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 1.75rem;
+    margin-right: 2rem;
+    padding: 0 20px;
+}
+
+.nav-link {
+    font-size: 15px;
+    cursor: pointer;
+    color: #000;
+    &.active {
+        color: $secondary;
+    }
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+h4 {
+    font-size: 22px !important;
+}
+
+.coming-soon {
+    position: relative;
+    span {
+        position: absolute;
+        top: 0px;
+        right: -3px;
+    }
+}

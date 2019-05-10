@@ -1,0 +1,29 @@
+<section>
+  <div
+    class="px-3 py-2 d-flex justify-content-between align-items-center header"
+  >
+    <span>Title</span>
+    <i
+      matTooltip="Expand / Minimize"
+      [ngClass]="isCollapsed ? 'fa-arrow-down' : 'fa-arrow-up'"
+      class="fas clickable"
+      (click)="isCollapsed = !isCollapsed"
+    ></i>
+  </div>
+
+  <div class="p-3" *ngIf="isCollapsed == true">
+    <p>Task : <span>A cloud function to create executive</span></p>
+    <p>Elapsed : {{ timer }}</p>
+
+    <button
+      (click)="toggleTimer()"
+      [ngClass]="
+        isPaused == true ? 'btn-outline-secondary' : 'btn-outline-warn'
+      "
+      class="btn mr-2"
+    >
+      <i [ngClass]="isPaused == true ? 'fa-play' : 'fa-pause'" class="fas"></i>
+    </button>
+    <button class="btn btn-primary">Log</button>
+  </div>
+</section>

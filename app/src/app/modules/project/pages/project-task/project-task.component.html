@@ -1,0 +1,142 @@
+<div class="row mb-4" *ngIf="task">
+  <div class="col-6">
+    <h2 class="my-4">{{task.title}}</h2>
+  </div>
+  <div class="col-6">
+    <p *ngIf="task.deadline" class="text-right my-2">Deadline :
+      {{(task.deadline.seconds | amFromUnix)| amDateFormat:'LL'}}
+    </p>
+
+    <button class="btn btn-sm btn-outline-secondary float-right mt-2" *ngIf="taskList" [disabled]="taskList.isCompleted === true"
+      (click)="editTask()">Edit Task</button>
+    <button class="btn btn-sm btn-success float-right mr-2 mt-2" (click)="startTimer()">
+      <i class="fas fa-play-circle"></i>
+      Start Timer
+    </button>
+  </div>
+
+  <div class="col-12">
+    <div class="people-avatar-container">
+      <figure class="user-badge" *ngFor="let person of task.people">
+        <img [appUserAvatar]="person" />
+        <p [appUserName]="person" class="text-center mt-1"></p>
+      </figure>
+    </div>
+    <p class="text-muted">{{task.description}}</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-12">
+    <h4 class="underlined">Files</h4>
+    <p>
+      <span>{{taskFiles.length == 0 ? 'No files added to this task' : (taskFiles.length + ' Files attached')}} - </span>
+      <a class="ml-1 add-file" (click)="uploadFiles()">Add files</a>
+    </p>
+  </div>
+  <div class="col-12">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let file of taskFiles">
+        <div>
+          <p class="mb-1 file-name">
+            <i class="far fa-file mr-2"></i>
+            {{file.name}}
+          </p>
+          <small class="mb-0 meta text-muted">Uploaded by
+            <span [appUserName]="file.userId"></span>
+            <span>, {{(file.createdAt.seconds | amFromUnix)| amTimeAgo}}</span>
+          </small>
+        </div>
+
+        <div>
+          <a [href]="file.downloadURL | async" target="_blank" class="btn btn-default btn-sm">
+            <i class="fas fa-cloud-download-alt mr-1"></i>
+            <span>Download</span>
+          </a>
+        </div>
+
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<hr>
+
+<div class="row" *ngIf="time">
+  <div class="col-md-3 col-sm-4">
+    <!-- <h4 class="underlined">Time Logs</h4> -->
+    <p>Total Logged : {{time.totalTime}} Hours</p>
+  </div>
+  <div class="col-md-3 col-sm-4">
+    <p>Billable : {{time.billableTime}} Hours</p>
+  </div>
+  <div class="col-md-3 col-sm-4">
+    <p>Non Billable : {{time.nonBillabletime}} Hours</p>
+  </div>
+  <div class="col-md-3 col-sm-12" *ngIf="taskList">
+    <button class="btn btn-outline-success float-right mb-2" [disabled]="taskList.isCompleted === true" (click)="logTime()">Log
+      time
+      on this task</button>
+  </div>
+
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" width="15%">Date</th>
+          <th scope="col">Person</th>
+          <th scope="col">Description</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th scope="col">Billable</th>
+          <th scope="col">Invoiced</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr app-time-log-item *ngFor="let log of timeLogs | projectSort: 'date' : true" [log]="log"></tr>
+      </tbody>
+    </table>
+
+
+    <p *ngIf="timeLogs.length == 0" class="no-time text-center mb-2">
+      <span>No time entries have been logged against this task</span>
+    </p>
+
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-12">
+    <h4 class="underlined mb-4">Comments</h4>
+    <div>
+      <div class="media mb-4" *ngFor="let comment of comments">
+        <img [appUserAvatar]="comment.userId" height="64" width="64" class="mr-3 avatar">
+        <div class="media-body">
+          <h5 [appUserName]="comment.userId" class="mt-0 mb-0"></h5>
+          <p *ngIf="comment.createdAt" class="mb-0">
+            <small class="text-muted">{{(comment.createdAt.seconds | amFromUnix)| amTimeAgo}}</small>
+          </p>
+          {{comment.description}}
+        </div>
+      </div>
+    </div>
+    <hr *ngIf="comments.length > 0">
+    <div>
+      <form #form="ngForm" [formGroup]="commentForm" (submit)="postComment(form)">
+        <mat-form-field>
+          <textarea matInput placeholder="Type your comment here" formControlName="description"></textarea>
+          <mat-error *ngIf="commentForm.controls.description.invalid">Yikes! You shouldn't leave the comment field like
+            that</mat-error>
+          <mat-hint align="end">{{commentForm.controls.description.value?.length || 0}}</mat-hint>
+        </mat-form-field>
+        <button class="btn btn-outline-success mt-2" type="submit" id="button-addon2">Add Comment</button>
+      </form>
+    </div>
+  </div>
+</div>

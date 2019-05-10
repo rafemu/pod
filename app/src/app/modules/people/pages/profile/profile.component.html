@@ -1,0 +1,70 @@
+<!-- <div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col-8">
+    <h6>{{person.firstName}} {{person.lastName}}</h6>
+    <p class="mb-0">
+      <small>
+        {{person.designation || 'No designation'}}
+      </small>
+    </p>
+
+    <p>
+      <i class="fas fa-envelope"></i>
+      <span>{{person.email}}</span>
+    </p>
+    <p>
+      <i class="fas fa-mobile"></i>
+      <span>{{person.phone || 'N/A'}}</span>
+    </p>
+    <button (click)="disableOrEnable()"></button>
+  </div>
+</div> -->
+
+<div class="row" *ngIf="person">
+
+  <div class="col-3">
+    <img width="100%" [src]="person.avatar" class="border border-success">
+  </div>
+
+  <div class="col-9">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+      <h4>{{person.firstName}} {{person.lastName}}</h4>
+      <!-- <button class="btn btn-sm">Disable</button> -->
+    </div>
+
+    <ul class="list-group list-group-flush mt-4">
+      <li class="list-group-item"> <i class="fas fa-envelope mr-2"></i>{{person.email}}</li>
+      <li class="list-group-item"><i class="fas fa-mobile mr-2"></i>{{person.phone || 'N/A'}}</li>
+    </ul>
+
+
+  </div>
+  <!-- <div class="col-3">
+    
+    
+    </div> -->
+</div>
+<hr>
+<!-- <div class="row">
+  <div class="col-6 border-right">
+    <h4>Devices</h4>
+    <ul class="list-group list-group-flush mt-4">
+      <li class="list-group-item"> <i class="fas fa-envelope"></i>{{person.email}}</li>
+      <li class="list-group-item"><i class="fas fa-mobile"></i>{{person.phone || 'N/A'}}</li>
+    </ul>
+  </div>
+  <div class="col-6">
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+      <h4>Payment</h4>
+      <img src="https://global-uploads.webflow.com/5873645ccda6383b06dc21d7/596366230ff196235b0175a2_powered_by_stripe.png"
+        width="100">
+    </div>
+
+
+    <p>Coming <span class="badge badge-info">v2.0.3</span></p>
+
+  </div>
+</div> -->

@@ -1,0 +1,16 @@
+<h3>{{taskList ? 'Edit' : 'Add'}} Task List</h3>
+<hr>
+
+<form #form="ngForm" [formGroup]="saveTaskListForm" (submit)="saveTaskList(form)">
+  <div class="form-group">
+    <!-- <label>Name the list</label> -->
+    <input type="email" formControlName="title" class="form-control" placeholder="Eg : Create App Layout">
+  </div>
+
+  <div class="form-group">
+    <!-- <label>Name the list</label> -->
+    <textarea formControlName="notes" class="form-control" rows="4" placeholder="Optional notes for this list"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-sm btn-primary">Save</button>
+</form>

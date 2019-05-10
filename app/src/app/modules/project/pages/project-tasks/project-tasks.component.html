@@ -1,0 +1,119 @@
+<div class="row mt-4">
+  <div class="col-6">
+    <h3 class="underlined">Tasks</h3>
+  </div>
+  <div class="col-6 right-top-action">
+    <button
+      *ngIf="
+        activeTaskList &&
+        !isLoadingTask &&
+        activeRoles.indexOf(user['designation']) > -1
+      "
+      [matMenuTriggerFor]="menu"
+      class="ml-1 btn btn-sm btn-primary float-right"
+    >
+      <i class="fas fa-sliders-h"></i>
+    </button>
+    <mat-menu overlapTrigger="false" #menu="matMenu">
+      <a mat-menu-item (click)="editTaskList()">Edit Task List</a>
+      <a *ngIf="activeTaskList" mat-menu-item (click)="toggleFinished()"
+        >Mark as {{ activeTaskList.isCompleted ? 'Unfinished' : 'Finished' }}
+      </a>
+    </mat-menu>
+    <button
+      *ngIf="activeTaskList && !isLoadingTask"
+      (click)="addTask()"
+      class="btn btn-sm btn-primary float-right"
+    >
+      Add new task
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="btn-group float-right" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        [ngClass]="view == 'list' ? 'btn-primary' : 'btn-secondary'"
+        (click)="setView('list')"
+        class="btn btn-sm"
+      >
+        <i class="fas fa-list"></i>
+      </button>
+      <button
+        type="button"
+        [ngClass]="view == 'coloumn' ? 'btn-primary' : 'btn-secondary'"
+        (click)="setView('coloumn')"
+        class="btn btn-sm"
+      >
+        <i class="fas fa-columns"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-sm-12 col-md-4 col-lg-3">
+    <!-- Task List -->
+    <h6 class="my-3 d-flex justify-content-between">
+      <span><i class="fas fa-clipboard mr-1"></i> Active Lists</span>
+      <small
+        class="clickable"
+        (click)="addTaskList()"
+        style="margin-top: 3px; color: #666;"
+        ><i class="fas fa-plus mr-1"></i>Add new</small
+      >
+    </h6>
+    <ul class="list-group list-group-flush task-list">
+      <li
+        *ngFor="let taskList of activeTaskLists"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <a
+          [ngClass]="{ selected: taskList.id == activeTaskList.id }"
+          (click)="selectTaskList(taskList)"
+          >{{ taskList.title }}</a
+        >
+        <span class="badge badge-pill badge-dark">{{ taskList.tasksCount || 0 }}</span>
+      </li>
+    </ul>
+    <h6 class="mt-5">
+      <i class="fas fa-clipboard-check mr-1"></i>
+      <span>Completed Lists</span>
+    </h6>
+    <ul class="list-group list-group-flush task-list">
+      <li
+        *ngFor="let taskList of completedTaskLists"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <a (click)="selectTaskList(taskList)">{{ taskList.title }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-12 col-md-8 col-lg-9 tasks-container">
+    <app-loading *ngIf="!activeTaskList && isLoadingTask"></app-loading>
+    <app-tasks-list
+      *ngIf="activeTaskList && !isLoadingTask && view == 'list'"
+      [projectId]="projectId"
+      [taskListId]="activeTaskList.id"
+    ></app-tasks-list>
+    <app-tasks
+      *ngIf="activeTaskList && !isLoadingTask && view == 'coloumn'"
+      [projectId]="projectId"
+      [taskListId]="activeTaskList.id"
+    ></app-tasks>
+
+    <div
+      class="text-center empty-tasklist mt-5"
+      *ngIf="!activeTaskList && !isLoadingTask"
+    >
+      <i class="fas fa-coffee"></i>
+      <h2>
+        Add a task list to get started
+      </h2>
+    </div>
+  </div>
+</div>

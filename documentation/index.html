@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <title>Pod | Realtime project management software</title>
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/stroke.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous" <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shThemeRDark.css" media="all">
+
+    <!-- CUSTOM -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div class="container">
+
+            <section id="top" class="section docs-heading">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="big-title text-center">
+                            <h1>Pod</h1>
+                            <p class="lead">Realtime project management software / documentation version 1.0</p>
+                        </div>
+                        <!-- end title -->
+                    </div>
+                    <!-- end 12 -->
+                </div>
+                <!-- end row -->
+
+                <hr>
+
+            </section>
+            <!-- end section -->
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+                        <ul class="nav">
+                            <li><a href="#line1">Getting Started</a></li>
+                            <li><a href="#line2">Setting up Environment</a></li>
+                            <li><a href="#line3">Setting up Firebase</a></li>
+                            <!-- <li><a href="#line4">Configuring Firebase CLI</a></li> -->
+                            <li><a href="#line5">Initializing the Project</a></li>
+                            <li><a href="#line7">Build and Deployment</a>
+                                <ul class="nav">
+                                    <li><a href="#line7_1">Cloud Functions (FaaS)</a></li>
+                                    <li><a href="#line7_2">Web Application (Angular 6)</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="#line8">Optional : Connecting a Domain or Subdomain</a></li> -->
+                            <!-- <li><a href="#line9">Files & Sources</a></li> -->
+                            <li><a href="#line10">Changelog</a></li>
+                            <!-- <li><a href="#line11">Copyright and license</a></li> -->
+                            <li><a href="#line12">Installation Services</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9">
+                    <section class="welcome">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Introduction
+                                    <hr>
+                                </h2>
+                                <div class="row">
+
+                                    <div class="col-md-12 full">
+                                        <div class="intro1">
+                                            <ul>
+                                                <li><strong>Item Name : </strong>Pod | Project management system</li>
+                                                <li><strong>Item Version : </strong> v 1.0.0</li>
+                                                <li><strong>Author : </strong> <a href="https://codecanyon.net/user/zweck-io/"
+                                                        target="_blank">zweck.io</a></li>
+
+                                            </ul>
+                                        </div>
+
+                                        <hr>
+                                        <div>
+                                            <p>First of all, Thanks for purchasing this software and for
+                                                being a loyal customer.
+                                                <strong>You are awesome!</strong>
+                                                <br> You are entitled to get free lifetime updates to this product +
+                                                exceptional support from the author directly.
+                                            </p>
+
+                                            <p>This documentation is to help you regarding each step of installation,
+                                                configuration and customization procedures.
+                                                Please go through the documentation carefully to understand how this
+                                                system is made and how to deploy this properly. Basic Programming and
+                                                Server administration
+                                                knowledge is required. Alternatively, you can hire us to
+                                                <a href="http://www.w3schools.com/" target="_blank">set this up</a> for
+                                                you</p>
+
+
+                                            <div class="intro2 clearfix">
+                                                <p><i class="fa fa-exclamation-triangle"></i> Be careful while handling
+                                                    the product. If not deployed properly, the app may break. No
+                                                    support is provided for faulty customization.
+                                                    Also you would be void of support for any future updates if you
+                                                    have customized the core part. We recommend you to
+                                                    keep the functional part of the software untouched, so you may
+                                                    easily
+                                                    install the future upgrades.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="line1" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Getting Started <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Tired of monthly user subscriptions ? Well, POD is a single time purchase software
+                                    that lets your colleagues collaborate on multiple projects. Product is
+                                    currently in initial phase. We are planning to incorporate more
+                                    features, so you can expect monthly releases</p>
+
+
+                                <img class="w-100" src="https://image.ibb.co/dQo3KK/pid_56_copy.jpg" alt="" srcset="">
+
+                                <p class="text-center mt-4">Please follow the steps below to setup the product</p>
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <hr>
+
+                    <section id="line2" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Setting up Environment <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="intro2 clearfix">
+                            <p><i class="fab fa-node"></i> Pod is built on the Javascript ecosystem. Hence make sure
+                                you have the following environment setup.
+                            </p>
+                        </div>
+
+                        <hr>
+                        <ul>
+                            <li>* Node.js 8.x+ & NPM 5.6+ : <a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a></li>
+                            <li>* Angular CLI 6+ : <a href="https://cli.angular.io/" target="_blank">https://cli.angular.io/</a></li>
+                            <li>* Firebase CLI</li>
+                        </ul>
+
+
+                        <h4>Setting up Firebase CLI</h4>
+                        Assuming you have already installed npm above
+                        <ol>
+                            <li>Open up terminal / Command prompt</li>
+                            <li>Type in <code>npm install -g firebase-tools</code>
+                                <br>
+                                <small>You should now have a globally available firebase command available from any
+                                    terminal window on your machine. </small>
+                            </li>
+                            <li>Once you've installed the Firebase CLI, sign in using your Google account: <code>firebase login</code></li>
+                        </ol>
+
+                        This command connects your local machine to your Firebase account and grants access to your
+                        projects. To test that authentication worked, you can run firebase list to see a list of all of
+                        your Firebase projects.
+
+                        None ? Don't worry we will create a project in next step
+
+                        <!-- <a href="#" class="btn btn-primary">Get a Installation Service</a> <a href="#" class="btn btn-info">Ask
+                            a Question</a> -->
+
+
+
+                    </section>
+                    <!-- end section -->
+
+
+                    <hr>
+
+                    <section id="line3" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Setting up Firebase <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <ol>
+                            <li>Create a Firebase project at <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a></li>
+                            <li>Let's enable the following services : <strong>Important</strong>
+                                <ol>
+                                    <li>Click on Authentication in the Left pane. Select Sign in Method Tabs and enable Email/Password</li>
+                                    <li>Click on Storage and enable it. Opt for the default rules</li>
+                                    <li>Click on Database and select the Test rules (We will be uploading the rules later)</li>
+                                </ol>
+                            </li>
+
+                            <li>Select the project and then Click on the <strong>Settings Icon</strong> from the left
+                                sidebar</li>
+                            <li>Select <strong>Project Settings</strong></li>
+                            <li>Keep a note of the <code>Project ID</code></li>
+                            <li>Paste it in <code>.firebaserc</code>
+                                <pre class="brush: html; highlight:[3]">
+{
+    "projects": {
+        "default": "paste-here"
+    }
+}
+                                </pre>
+                            </li>
+                            <li>Get back to the firebase console and click on <strong>Cloud Messaging</strong></li>
+                            <li>Copy <code>Sender ID</code> (For Push Notifications)</li>
+                            <li>Paste it in <code>app/src/firebase-messaging-sw.js</code>
+
+                                <pre class="brush: html; highlight:[6]">
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
+
+
+firebase.initializeApp({
+    'messagingSenderId': 'paste-here'
+});
+
+const messaging = firebase.messaging();    
+                                </pre>
+
+                            </li>
+
+                            <li>Paste it in <code>app/src/manifest.json</code>
+
+                                <pre class="brush: html; highlight:[5]">
+{
+    "short_name": "Pod",
+    "name": "Pod | Project Management",
+    "start_url": "/?utm_source=homescreen",
+    "gcm_sender_id": "paste-here"
+}
+              
+                                </pre>
+                            </li>
+
+                        </ol>
+
+
+                        <p>Did you know ? Firebase projects are backed by Google Cloud Platform, letting you scale your
+                            app to billions of users.</p>
+
+
+                    </section>
+                    <!-- end section -->
+
+
+                    <section id="line5" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Initializing the project <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <p class="mb-0">Now as we have the project zip extracted and environment setup, Let us
+                                    install all
+                                    the project dependencies</p>
+
+                                <ol>
+                                    <li>Open up terminal and navigate to the <code>functions</code> direcotry</li>
+                                    <li><code>npm install</code> or <code>yarn</code></li>
+                                    <li><code>cd ..</code> & <code>cd app</code></li>
+                                    <li><code>npm install</code> or <code>yarn</code></li>
+                                </ol>
+
+                                We have thus installed the dependencies for both Web App and Microservices
+
+                                <p class="mb-0">Since POD is a closed system, new registrations aren’t available by
+                                    default. Only
+                                    the Administrators have the privelege to provision new users. Hence we need to
+                                    create the first Administrator. I will now guide you through the steps to create
+                                    one.</p>
+
+                                <ol>
+                                    <li>Open up terminal and navigate to the <code>functions</code> direcotry</li>
+                                    <li>Type in <code>npm initialize</code></li>
+                                    <li>Enter the user information as and when prompted</li>
+                                    <li>Kudos, you’ve succesfully added the first Administrator</li>
+                                </ol>
+                            </div>
+
+                            <p class="mb-0">You can always add more Administrators using the same process or via the
+                                Web application
+                                which we are going to setup in the next step</p>
+
+
+
+
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <hr>
+
+
+                    <section id="line7" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Build and Deployment <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <h4 id="line7_1">Cloud Functions (FaaS)</h4>
+                                <p>Cloud Functions for Firebase lets you automatically run backend code in response to
+                                    events triggered by Firebase features and HTTPS requests. Your code is stored in
+                                    Google's cloud and runs in a managed environment. There's no need to manage and
+                                    scale your own servers. This section guides to deploy the functions onto your
+                                    firebase
+                                    project</p>
+
+                                <ol>
+                                    <li>Open up Firebase project console <a href="https://console.firebase.google.com"
+                                            target="_blank">https://console.firebase.google.com</a></li>
+                                    <li>Click on the <strong>Settings Icon</strong> from the left sidebar</li>
+                                    <li>Select <strong>Project Settings</strong></li>
+                                    <li>Click on the <strong>Service accounts</strong> tab</li>
+                                    <li>Select Node.js and Click on <strong>Generate new private key</strong> button</li>
+                                    <li>Rename to <code>key.json</code> and paste it to <strong>functions/keys</strong>
+                                        sub-directory</li>
+                                    <li>Open up a console window (Terminal)</li>
+                                    <li>Navigate to functions directory</li>
+                                    <li><code>npm run deploy</code> or <code>yarn deploy</code></li>
+                                    <li>Wait till the deployment process is complete. This may take some time. You may
+                                        cross check the functions at <a href="https://console.firebase.google.com/"
+                                            target="_blank">https://console.firebase.google.com/</a></li>
+                                    <li>Take a note of the *API Base URL</li>
+                                </ol>
+
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title mb-2">Did you know ?</h5>
+
+                                        <p>
+                                            <small>After you write and deploy a function, Google's servers begin to
+                                                manage
+                                                the function immediately. You can fire the function directly with
+                                                an
+                                                HTTP request, or, in the case of background functions, Google's
+                                                servers
+                                                will listen for events and run the function when it is triggered.
+
+                                                As the load increases or decreases, Google responds by rapidly
+                                                scaling
+                                                the number of virtual server instances needed to run your function.
+                                                Each function runs in isolation, in its own environment with its
+                                                own
+                                                configuration.
+                                            </small>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+
+                        <!-- end row -->
+
+
+                        <div class="row mt-5">
+
+                            <div class="col-md-12">
+                                <h4 id="line7_2">Web Application (Angular 6)</h4>
+                                <p>This section describes techniques for deploying the POD Angular application to
+                                    firebase hosting. You may also deploy the application to a custom server if you
+                                    wish, which is not covered in this guide.</p>
+
+                                <ol>
+                                    <li>Open up Firebase project console <a href="https://console.firebase.google.com"
+                                            target="_blank">https://console.firebase.google.com</a></li>
+                                    <li>Select <strong>Project Overview</strong> from the left sidebar</li>
+                                    <li>Click on <strong>+ Add App</strong> button and select Web</li>
+                                    <li>Copy the snippet
+                                        <pre class="brush: html">
+// Initialize Firebase
+var config = {
+    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "xxxx-xxxx.firebaseapp.com",
+    databaseURL: "https://xxxx-xxxxx.firebaseio.com",
+    projectId: "xxxx-xxxxx",
+    storageBucket: "xxxx-xxxxx.appspot.com",
+    messagingSenderId: "xxxxxxxxxxxxxxx"
+};
+                                               </pre>
+
+                                    </li>
+                                    <li>Replace the keys in <code>app/src/environment/environment.ts</code> and <code>app/src/environment/environment.prod.ts</code>
+
+                                        <pre class="brush: html">
+                                            export const environment = {
+                                                production: false,
+                                                firebase: {
+                                                  apiKey: '',
+                                                  authDomain: '',
+                                                  databaseURL: '',
+                                                  projectId: '',
+                                                  storageBucket: '',
+                                                  messagingSenderId: ''
+                                                },
+                                                cloud : {
+                                                  apiUrl : '*API Base URL copied in the previous step | Eg : https://us-central1-xxxx-xxxx.cloudfunctions.net/'
+                                                }
+                                              };
+                                    </pre>
+
+
+                                    </li>
+                                    <li>Open up a console window (Terminal)</li>
+                                    <li><code>npm run deploy</code> or <code>yarn deploy</code></li>
+                                    <li>Wait till the deployment process is complete. This may take some time. You will
+                                        be provided with the App URL at the end</li>
+                                </ol>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <small>
+                                            <h5 class="card-title">Did you know ? The --prod meta-flag engages the
+                                                following optimization features.</h5>
+                                            <ol>
+                                                <li>Ahead-of-Time (AOT) Compilation: pre-compiles Angular component
+                                                    templates.</li>
+                                                <li>Production mode: deploys the production environment which enables
+                                                    production mode.</li>
+                                                <li>Bundling: concatenates your many application and library files into
+                                                    a
+                                                    few
+                                                    bundles.</li>
+                                                <li>Minification: removes excess whitespace, comments, and optional
+                                                    tokens.</li>
+                                                <li>Uglification: rewrites code to use short, cryptic variable and
+                                                    function
+                                                    names.</li>
+                                                <li>Dead code elimination: removes unreferenced modules and much unused
+                                                    code.</li>
+                                            </ol>
+                                        </small>
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+
+                    </section>
+                    <!-- end section -->
+
+
+                    <!-- end section -->
+
+                    <!-- <section id="line9" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Files & Sources <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Included Stylesheets</strong>
+
+                                <p>These are the primary CSS files used for general front-end styling. Use these to
+                                    customize your theme even further. All included JavaScript codes under <strong>yourthemename/css/</strong></p>
+
+                                <ul>
+                                    <li>1. style.css - Primary stylesheet</li>
+                                    <li>2. bootstrap.css - Bootstrap stylesheet</li>
+                                    <li>3. owl-carousel.css - OWL Carousel</li>
+                                    <li>4. fontawesome.css - FontAwesome Font Icons stylesheet</li>
+                                    <li>5. custom.css - Pathos Color Schemes stylesheet</li>
+                                    <li>6. prettyPhoto.css - Lightbox effect css file</li>
+                                    <li>7. flexslider.css - Flexslider css file</li>
+                                    <li>8. et-line.css - Elegant icons css file</li>
+                                    <li>9. carousel.css - OWL Carousel css file</li>
+                                    <li>10. animate.css - CSS3 animations css file</li>
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <strong>Included JavaScript</strong>
+
+                                <p>These are the various attribution inks to the Javascript files included or modified
+                                    to work with in this theme. All included JavaScript codes under <strong>yourthemename/js/</strong></p>
+
+                                <ul>
+                                    <li>1. bootstrap.js - Bootstrap JavaScript</li>
+                                    <li>2. custom.js - All JavaScript Plugins</li>
+                                    <li>3. retina.js - Retina JavaScript</li>
+                                    <li>4. jquery.js - Base JavaScript</li>
+                                    <li>5. prettyPhoto.js - Lightbox JavaScript</li>
+                                    <li>6. owl-carousel.js - Lightbox JavaScript</li>
+                                    <li>7. revslider.js - Revolution Slider JavaScript</li>
+                                    <li>8. flexslider.js - Flexslider JavaScript</li>
+                                    <li>9. awesome-grid.nin.js - Awesome grid portfolio JavaScript</li>
+                                    <li>10. circle.js - Coming soon page JavaScript</li>
+                                    <li>11. contact.js - Contact form validate JavaScript</li>
+                                    <li>12. isotope.js - Masonry Portfolio JavaScript</li>
+                                    <li>13. progress.js - Progress bar JavaScript</li>
+                                    <li>14. rotate.js - Text rotate effect JavaScript</li>
+                                    <li>15. wow.js - CSS3 animation JavaScript</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </section> -->
+
+                    <section id="line10" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Version History (Changelog) <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <p>You can also find the version history on the sale page.</p>
+
+                                <hr>
+
+                                <h4>Changelog</h4>
+
+                                <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.0 - Oct 8th, 2018
+                                        -----------------------------------------------------------------------------------------
+
+                                        - initial release
+
+                                </pre>
+
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <!-- <section id="line11" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Copyright and license <a href="#top">#back to top</a><hr></h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                <p>Code released under the <a href="#" target="_blank">Un License</a> License.</p>                        
+                                <p>For more information about copyright and license check <a href="https://choosealicense.com/" target="_blank">choosealicense.com</a>.</p>
+                            
+                            </div>
+                        </div>
+
+                    </section> -->
+                    <!-- end section -->
+
+                    <section id="line12" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Installation Services <a href="#top">#back to top</a>
+                                    <hr>
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <p>Please contact harsha@zweck.io for Installation services</p>
+
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                <!-- // end .col -->
+
+            </div>
+            <!-- // end .row -->
+
+        </div>
+        <!-- // end container -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <!-- CUSTOM PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/syntax-highlighter/scripts/shCore.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushXml.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<ul class="list-group-flush">
+  <ng-template #recursiveList let-tasks>
+    <li class="list-group-item" *ngFor="let task of tasks">
+      <div class="d-flex justify-content-between align-items-center">
+        <section>
+          <span class="badge name-badge mr-4">
+            <i
+              matTooltip="Mark as completed"
+              (click)="toggleCompleted(task)"
+              class="fas fa-check-circle mark-completed mr-2"
+            ></i>
+            <span [appUserName]="task.people[0]"></span>
+            <span *ngIf="task.people.length > 1">
+              + {{ task.people.length - 1 }} others
+            </span>
+          </span>
+          <span
+            class="clickable"
+            [routerLink]="['/project/manage', projectId, 'tasks', task.id]"
+            >{{ task.title }}</span
+          >
+          <div class="icon-wrapper">
+            <i
+              matTooltip="Edit"
+              class="fas fa-arrow-circle-down"
+              [matMenuTriggerFor]="menu"
+            ></i>
+            <mat-menu #menu="matMenu" overlapTrigger="false">
+              <a (click)="editTask(task)" mat-menu-item
+                ><i class="fas fa-edit mr-1"></i> Edit Task</a
+              >
+              <a
+                mat-menu-item
+                (menuOpened)="menuOpened($event)"
+                [matMenuTriggerFor]="taskLists"
+                ><i class="fas fa-expand-arrows-alt mr-1"></i> Move to</a
+              >
+            </mat-menu>
+
+            <mat-menu #taskLists="matMenu" [overlapTrigger]="false">
+              <a
+                *ngFor="let taskList of projectTaskLists"
+                (click)="moveTask(taskList, task)"
+                mat-menu-item
+                >{{ taskList.title }}</a
+              >
+            </mat-menu>
+
+            <i
+              matTooltip="Add Time Log"
+              (click)="logTime(task.id)"
+              class="fa fa-clock"
+            ></i>
+            <i
+              matTooltip="Add Subtask"
+              (click)="addSubtask(task)"
+              class="fas fa-list"
+            ></i>
+            <!-- <i
+              matTooltip="Due date"
+              class="far fa-calendar-alt"
+              (click)="task.showDate = !task.showDate"
+            ></i> -->
+            <i
+              matTooltip="Attach file"
+              (click)="uploadFiles(task.id)"
+              class="fas fa-paperclip"
+            ></i>
+            <i
+              matTooltip="Add Comment"
+              (click)="addComment(task.id)"
+              class="fas fa-comments"
+            ></i>
+            {{ task.progress }}
+            <i
+              matTooltip="Set Progress"
+              (click)="task.showProgress = !task.showProgress"
+              class="fas fa-percentage"
+            ></i>
+          </div>
+        </section>
+        <i
+          matTooltip="Add Estimate"
+          class="fa fa-plus add-estimate clickable"
+        ></i>
+      </div>
+      <div class="progress-wrapper" *ngIf="task.showProgress == true">
+        <hr />
+        <h6>Update Progress</h6>
+        <mat-slider
+          tickInterval="10"
+          min="0"
+          max="90"
+          [(ngModel)]="task.progress"
+          (ngModelChange)="updateProgress(task)"
+          thumbLabel
+        ></mat-slider>
+      </div>
+      <div *ngIf="task.showDate == true"></div>
+      <ul *ngIf="task.children">
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveList;
+            context: { $implicit: task.children }
+          "
+        ></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+  <ng-container
+    *ngTemplateOutlet="recursiveList; context: { $implicit: tasks }"
+  ></ng-container>
+</ul>
+
+<div class="empty-wrapper" *ngIf="tasks.length == 0">
+  <h4><i class="fas fa-book-open"></i></h4>
+  <p class="text-center">No tasks here. Add one to get started</p>
+</div>

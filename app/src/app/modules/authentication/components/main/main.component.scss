@@ -1,0 +1,55 @@
+.container-fluid {
+  height: 100vh;
+  overflow-x: hidden;
+  background: url('/assets/green-pattern-2K-wallpaper.jpg');
+  background-size: cover;
+  // background: #134e5e; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(
+  //   to right,
+  //   #134e5e,
+  //   #71b280
+  // ); /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(
+  //   to right,
+  //   #134e5e,
+  //   #71b280
+  // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding: 0;
+  .row {
+    overflow: hidden;
+    mat-form-field {
+      width: 100%;
+    }
+
+    a {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+
+    .information-container {
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0.95;
+      margin: 0;
+      padding: 0;
+      .features {
+        img {
+          height: 48px;
+        }
+        p {
+          margin-top: 15px;
+          line-height: 16px;
+        }
+      }
+    }
+
+    .form-container {
+      padding-top: 150px;
+      background-color: rgba(255, 255, 255, 0.90);
+      height: 100vh;
+    }
+  }
+}

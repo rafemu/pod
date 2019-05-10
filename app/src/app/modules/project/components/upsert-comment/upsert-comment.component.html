@@ -1,0 +1,34 @@
+<form #form="ngForm" [formGroup]="commentForm" (submit)="postComment(form)">
+  <div>
+    <h4>Add Comment</h4>
+    <hr>
+    <mat-form-field>
+      <textarea matInput placeholder="Type your comment here" formControlName="description" rows="5"></textarea>
+      <mat-error *ngIf="commentForm.controls.description.invalid">Yikes! You shouldn't leave the comment field like
+        that</mat-error>
+      <mat-hint align="end">{{commentForm.controls.description.value?.length || 0}}</mat-hint>
+    </mat-form-field>
+  </div>
+  <hr>
+  <!-- <h6 class="underlined">
+    <i class="fas fa-envelope mr-3"></i>
+    Who should be notified?</h6>
+  <div class="row">
+    <div class="col-12">
+      <div class="people-avatar-container custom-scrollbar">
+        <figure class="user-badge" *ngFor="let user of people">
+          <img [appUserAvatar]="user.userId" />
+          <p [appUserName]="user.userId" class="text-center mt-1"></p>
+        </figure>
+      </div>
+      <div *ngIf="!people">
+        <p>No users? Wierd...</p>
+      </div>
+    </div>
+  </div> -->
+  <!-- <hr> -->
+  <div class="d-flex justify-content-between align-items-center">
+    <button class="btn btn-sm btn-secondary" (click)="closeDialog()">Close</button>
+    <button class="btn btn-sm btn-success" type="submit">Save Comment</button>
+  </div>
+</form>

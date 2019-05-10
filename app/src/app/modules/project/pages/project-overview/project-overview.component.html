@@ -1,0 +1,45 @@
+<!-- <div class="row mt-4" *ngIf="project">
+  <div class="col-12">
+    <h3 class="underlined">{{project.caption}}</h3>
+  </div>
+  <div class="col-12">
+    <p>{{project.description}}</p>
+  </div>
+</div>
+
+<hr> -->
+
+<div class="row mt-4">
+  <div class="col-12">
+    <h3 class="underlined">Recent Activities</h3>
+  </div>
+  <div class="col-12">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item activity-item" *ngFor="let activity of activites">
+        <app-activity-item [activity]="activity" [projectId]="projectId"></app-activity-item>
+      </li>
+      <li class="list-group-item" *ngIf="!activites.length">
+        <span>No activities till now...</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-12">
+    <h3 class="underlined">Who's on this project</h3>
+  </div>
+  <div class="col-12">
+    <div class="people-avatar-container">
+      <figure class="user-badge" *ngFor="let user of people">
+        <img [appUserAvatar]="user.userId" />
+        <p [appUserName]="user.userId" class="text-center mt-1"></p>
+      </figure>
+    </div>
+    <div *ngIf="!people">
+      <p>No users? Wierd...</p>
+    </div>
+  </div>
+</div>

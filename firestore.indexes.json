@@ -1,0 +1,57 @@
+{
+  // Example:
+  //
+  // "indexes": [
+  //   {
+  //     "collectionId": "widgets",
+  //     "fields": [
+  //       { "fieldPath": "foo", "mode": "ASCENDING" },
+  //       { "fieldPath": "bar", "mode": "DESCENDING" }
+  //     ]
+  //   }
+  // ]
+  "indexes": [
+    {
+      "collectionId": "Tasks",
+      "fields": [
+        { "fieldPath": "taskListId", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "TaskLists",
+      "fields": [
+        { "fieldPath": "id", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "Time",
+      "fields": [
+        { "fieldPath": "isBillable", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "Tasks",
+      "fields": [
+        { "fieldPath": "id", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "Time",
+      "fields": [
+        { "fieldPath": "taskId", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "Files",
+      "fields": [
+        { "fieldPath": "taskId", "mode": "ASCENDING" },
+        { "fieldPath": "createdAt", "mode": "DESCENDING" }
+      ]
+    }
+  ]
+}

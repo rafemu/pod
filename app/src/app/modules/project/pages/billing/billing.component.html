@@ -1,0 +1,127 @@
+<div class="row mt-3">
+  <div class="col-8"></div>
+  <div class="col-4 d-flex justify-content-end">
+    <button class="btn btn-primary mr-2" (click)="addInvoice()">
+      Create Invoice
+    </button>
+    <button class="btn btn-primary" (click)="addExpense()">
+      Add Expense
+    </button>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-3 invoices-col">
+    <h4 class="underlined">All Invoices</h4>
+    <div class="media mb-3 clickable" *ngFor="let invoice of invoices">
+      <i class="fas fa-file-invoice mr-3"></i>
+      <div class="media-body" (click)="openInvoice(invoice.invoiceId)">
+        <h5 class="mt-0">{{invoice.invoiceId}}</h5>
+        <p>{{ (invoice.lastUpdatedAt.seconds | amFromUnix) | amDateFormat:'LL'}}</p>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <p>No invoices generated yet</p>
+    </div>
+
+  </div>
+  <div class="col-md-9">
+
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a (click)="activeView='time'" class="nav-link clickable" [ngClass]="{'active' : activeView == 'time'}">Unbilled
+              Time</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="activeView='expense'" class="nav-link clickable" [ngClass]="{'active' : activeView == 'expense'}">Unbilled
+              Expenses
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <table *ngIf="activeView == 'time'" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">
+            <mat-checkbox></mat-checkbox>
+          </th>
+          <th scope="col">Date</th>
+          <th scope="col">Person</th>
+          <th scope="col">Description</th>
+          <th scope="col">Time</th>
+          <th scope="col">Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logs">
+          <th scope="row">
+            <mat-checkbox [(ngModel)]="log.selected"></mat-checkbox>
+          </th>
+          <td>{{ (log.date.seconds | amFromUnix) | amDateFormat:'LL'}}</td>
+          <td>
+            <p [appUserName]="log.userId"></p>
+          </td>
+          <td>{{log.description}}</td>
+          <td>{{getTotalTime(log.from, log.to)}}</td>
+          <td>0.00</td>
+        </tr>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <button class="btn btn-primary btn-sm" (click)="moveToInvoice()">Move Items</button>
+          </td>
+          <td>
+            <!-- Sub Total :  -->
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <table *ngIf="activeView == 'expense'" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">
+            <mat-checkbox></mat-checkbox>
+          </th>
+          <td>Date</td>
+          <td>Expense</td>
+          <td>Description</td>
+          <td>Who</td>
+          <td>Cost</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expense of expenses">
+          <th scope="row">
+            <mat-checkbox></mat-checkbox>
+          </th>
+          <td>{{ (expense.date.seconds | amFromUnix) | amDateFormat:'LL'}}</td>
+          <td>{{expense.expense}}</td>
+          <td>{{expense.description}}</td>
+          <td>
+            <p [appUserName]="expense.userId"></p>
+          </td>
+          <td>Cost</td>
+        </tr>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <button class="btn btn-primary btn-sm" (click)="openBottomSheet()">Move Items</button>
+          </td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+</div>

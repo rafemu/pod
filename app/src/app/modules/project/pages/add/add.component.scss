@@ -1,0 +1,32 @@
+// @import url('./../../../../../_theme');
+@import './../../../../../theme';
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-checkbox {
+  margin-right: 20px;
+}
+
+figure {
+  cursor: pointer;
+}
+
+.badge {
+  margin-right: 5px;
+}
+
+h4 {
+  position: relative;
+  margin-bottom: 15px;
+  color: $primary;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 45px;
+    height: 2px;
+    background: $primary;
+  }
+}

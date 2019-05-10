@@ -1,0 +1,57 @@
+@import './../../../../../theme';
+
+.basic-textarea textarea {
+  height: auto;
+}
+
+.friend-list {
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.card.chat-room {
+  .friend-list li {
+    border-bottom: 1px solid #e0e0e0;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+  img {
+    &.rounded-circle {
+      border-radius: 50%;
+    }
+    &.avatar {
+      height: 64px;
+      width: 64px;
+    }
+  }
+  .text-small {
+    font-size: 0.95rem;
+  }
+  .text-smaller {
+    font-size: 0.75rem;
+  }
+}
+
+.nav-pills {
+  .nav-item {
+    a {
+      cursor: pointer;
+    }
+    .active {
+      background: none;
+      border: 1px solid $primary;
+      color: $primary;
+    }
+  }
+}
+
+.user-item {
+  a {
+    cursor: pointer;
+  }
+}
+
+.new-chat-wrapper {
+  height: 72vh;
+}

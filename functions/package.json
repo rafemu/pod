@@ -1,0 +1,28 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "deploy-pod": "firebase use default && firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "initialize": "node initialize.js"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "firebase": "^5.3.0",
+    "firebase-admin": "~5.13.0",
+    "firebase-functions": "^2.0.0",
+    "firebase-tools": "^6.3.0",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "tslint": "~5.8.0",
+    "typescript": "~2.8.3"
+  },
+  "private": true
+}

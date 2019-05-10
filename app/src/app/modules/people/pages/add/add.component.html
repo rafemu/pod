@@ -1,0 +1,116 @@
+<div class="row">
+  <div class="col-6">
+    <h1 class="my-4">Add a User
+    </h1>
+  </div>
+  <div class="col-6">
+    <button routerLink="/people/list" class="btn btn-sm btn-outline-danger float-right mt-5">Back to People</button>
+  </div>
+</div>
+
+<hr>
+<form [formGroup]="addUserForm" #form="ngForm" (submit)="createUser(form)">
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5">
+      <h4 class="underlined">Login Credentials</h4>
+    </div>
+    <div class="col-7">
+      <mat-form-field>
+        <input type="email" matInput placeholder="Email Address" formControlName="email">
+        <mat-error *ngIf="addUserForm.controls.email.invalid">Enter a valid mail</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="addUserForm.controls.password.invalid">This field is required</mat-error>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5">
+      <h4 class="underlined">Profile</h4>
+    </div>
+    <div class="col-7">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="addUserForm.controls.firstName.invalid">This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Surname" formControlName="surName">
+        <mat-error *ngIf="addUserForm.controls.surName.invalid">This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput placeholder="Phone Number (Optional)" formControlName="phone">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput placeholder="Designation (Optional)" formControlName="designation">
+      </mat-form-field>
+
+
+
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5">
+      <h4 class="underlined">Role &amp; Privileges</h4>
+    </div>
+    <div class="col-7">
+      <!-- <mat-form-field> -->
+        <mat-slide-toggle formControlName="role">Is Administrator</mat-slide-toggle>
+        <!-- <mat-select formControlName="role" placeholder="Choose a role...">
+          <mat-option value="Administrator">Administrator</mat-option>
+          <mat-option value="Manager">Project Manager</mat-option>
+          <mat-option value="Associate">Associate</mat-option>
+          <mat-option value="Client">Client</mat-option>
+        </mat-select> -->
+        <!-- <mat-error *ngIf="addUserForm.controls.role.invalid">This field is required</mat-error> -->
+      <!-- </mat-form-field> -->
+
+      <!-- <mat-form-field>
+        <mat-select formControlName="companyId" placeholder="Select a company...">
+          <mat-option *ngFor="let company of companies | async" [value]="company.id">{{company.name}}</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <!-- <h4 class="text-center">OR</h4> -->
+      <!-- 
+      <button type="button" (click)="addCompany()">Add</button>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Add a new Company</mat-label>
+        <input formControlName="companyName" matInput placeholder="Add a new Company">
+        <mat-hint>You can re-use this company later</mat-hint>
+      </mat-form-field> -->
+    </div>
+
+  </div>
+
+
+
+  <hr>
+
+  <div class="row">
+    <div class="col-12">
+      <p class="text-muted">
+        <small>
+          Note : Creating a user will take some time. Please be patient and do not navigate away.
+        </small>
+      </p>
+      <button type="submit" [disabled]="isAddingUser" class="btn btn-sm btn-outline-success">{{ isAddingUser ?
+        'Authoring...' :
+        'Add'}}</button>
+    </div>
+
+  </div>
+</form>

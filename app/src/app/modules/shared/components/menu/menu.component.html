@@ -1,0 +1,25 @@
+<mat-nav-list>
+  <a routerLinkActive="active" routerLink="/dashboard" mat-list-item (click)="openLink($event)">
+    <span mat-line>dashboard</span>
+    <small mat-line class="text-muted">recent activites on your projects</small>
+  </a>
+
+  <a routerLinkActive="active" routerLink="/project" mat-list-item (click)="openLink($event)">
+    <span mat-line>projects</span>
+    <small mat-line class="text-muted">collaborate on projects</small>
+  </a>
+
+  <a routerLinkActive="active" routerLink="/people" mat-list-item (click)="openLink($event)">
+    <span mat-line>people</span>
+    <span mat-line class="text-muted">meet your co-workers</span>
+  </a>
+
+  <a routerLinkActive="active" routerLink="/settings/update-profile" mat-list-item (click)="openLink($event)">
+    <span mat-line>edit profile</span>
+  </a>
+
+  <a mat-list-item (click)="signOut()">
+    <span mat-line>logout</span>
+  </a>
+
+</mat-nav-list>

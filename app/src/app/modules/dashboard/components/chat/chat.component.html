@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-12">
+    <h2 [appUserName]="otherUserId" class="mb-1"></h2>
+    <p class="mb-0">
+      <!-- <small class="text-muted">Online</small> -->
+    </p>
+  </div>
+</div>
+
+<hr />
+<div *ngIf="!isLoading" class="row px-2">
+  <div class="col-12 chat-container" id="custom-scrollbar" #chatContainer>
+    <div class="pt-4 px-1">
+      <div
+        class="media mb-2"
+        [ngClass]="myId == message.userId ? 'text-right' : 'text-left'"
+        *ngFor="let message of messages"
+      >
+        <div class="media-body">
+          <p class="my-0">
+            <small>
+              <span [appUserName]="message.userId"></span>,
+
+              <span>{{
+                message.createdAt
+                  ? (message.createdAt.seconds | amFromUnix | amTimeAgo)
+                  : 'Sending...'
+              }}</span>
+            </small>
+          </p>
+          <p>
+            {{ message.message }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!messages.length">
+      <p>No messages in here. Break the silence</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="row">
+  <div class="col-12 chat-container mt-5">
+    <app-loading></app-loading>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-12">
+    <emoji-mart
+      *ngIf="showEmoji"
+      emojiTooltip="false"
+      (emojiSelect)="emojiSelected($event)"
+      title="Pick your emoji…"
+      emoji="point_up"
+      isNative="true"
+      showPreview="false"
+    ></emoji-mart>
+    <form
+      [formGroup]="sendMessageForm"
+      #form="ngForm"
+      (submit)="sendMessage(form)"
+    >
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="message"
+          placeholder="Type a message"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="showEmoji = !showEmoji"
+            type="button"
+          >
+            😀
+          </button>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

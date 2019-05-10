@@ -1,0 +1,30 @@
+<div class="row align-items-center">
+  <div class="col-md-3">
+    <a [routerLink]="['/project/manage', project.id]">
+      <img class="img-fluid float-right mb-md-0" [src]="project.projectImage || '/assets/project-profile.png'"
+        alt="">
+    </a>
+  </div>
+  <div class="col-md-9">
+    <h3>
+      <a [routerLink]="['/project/manage', project.id]">{{project.title}}</a>
+    </h3>
+    <h5>{{project.caption}}</h5>
+    <div class="tags">
+      <span *ngFor="let tag of project.tags" class="badge badge-primary">{{tag}}</span>
+    </div>
+    <p>{{project.description || 'Ahhh this project doesnt have a description'}}</p>
+    <p class="mb-0">
+      <small *ngIf="project.lastActivityAt">
+        Last activity {{(project.lastActivityAt.seconds | amFromUnix)| amTimeAgo}}
+      </small>
+    </p>
+    <p *ngIf="project.lastActivityAt" class="mb-0">
+      <small>
+        Added on {{(project.createdAt.seconds | amFromUnix)| amDateFormat:'LL'}}
+      </small>
+    </p>
+  </div>
+</div>
+
+<hr>

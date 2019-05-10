@@ -1,0 +1,109 @@
+<div class="card grey lighten-3 chat-room">
+    <div class="card-body">
+
+        <!-- Grid row -->
+        <div class="row px-lg-2 px-2">
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-xl-4 px-2">
+                <ul class="nav nav-pills nav-fill border">
+                    <li class="nav-item">
+                        <a (click)="activeView = 'chats'" [ngClass]="{ 'active' : activeView == 'chats' }" class="nav-link">Chats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="activeView = 'people'" [ngClass]="{ 'active' : activeView == 'people' }" class="nav-link">People</a>
+                    </li>
+                </ul>
+                <div class="white z-depth-1 px-1 pt-3 pb-0">
+
+                    <ul class="list-unstyled friend-list p-2" id="custom-scrollbar" *ngIf="activeView == 'chats'">
+                        <li class="active grey user-item lighten-3 p-2" *ngFor="let chat of chats | projectSort : 'lastUpdated' : true ">
+                            <a (click)="getChat(chat.userId)" class="d-flex justify-content-between">
+                                <div class="d-flex align-items-start">
+                                    <img [appUserAvatar]="chat.userId" class="avatar rounded-circle border mr-3">
+                                    <div class="py-1" style="display:inline-block">
+                                        <p [appUserName]="chat.userId" class="mb-1"></p>
+                                        <p class="last-message text-muted mb-0">{{chat.lastMessage}}</p>
+                                    </div>
+                                </div>
+                                <div class="chat-footer">
+                                    <!-- <span></span> -->
+                                    <p class="text-smaller text-muted mb-0">{{chat.lastUpdated ?
+                                        ((chat.lastUpdated.seconds | amFromUnix) | amTimeAgo ):
+                                        'Sending...' }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled friend-list p-2" id="custom-scrollbar" *ngIf="activeView == 'people'">
+                        <li>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Filter</span>
+                                </div>
+                                <input type="text" class="form-control" [(ngModel)]="searchUser">
+                            </div>
+
+                        </li>
+                        <li class="active grey user-item lighten-3 p-2" *ngFor="let user of users | filter : 'firstName' : searchUser">
+                            <a (click)="getChat(user.uId)" class="d-flex justify-content-between">
+                                <div class="d-flex align-items-start">
+                                    <img [appUserAvatar]="user.uId" class="avatar rounded-circle border mr-3">
+                                    <div class="py-1" style="display:inline-block">
+                                        <p [appUserName]="user.uId" class="mb-1"></p>
+                                        <!-- <p class="last-message text-muted mb-0">{{chat.lastMessage}}</p> -->
+                                    </div>
+                                </div>
+                                <div class="chat-footer">
+                                    <p class="text-smaller text-muted mb-0">Just now</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- 
+                    <ul class="list-unstyled friend-list" *ngIf="activeView == 'people'">
+                        <li class="active grey lighten-3 p-2" *ngFor="let user of users">
+                            <a (click)="getChat(user.uId)" class="d-flex justify-content-between">
+                                <img [appUserAvatar]="user.uId" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+                                <div class="text-small">
+                                    <strong><span [appUserName]="user.uId"></span></strong>
+                                    <p class="last-message text-muted">Hello, Are you there?</p>
+                                </div>
+                                <div class="chat-footer">
+                                    <p class="text-smaller text-muted mb-0">Just now</p>
+                                    <span class="badge badge-danger float-right">1</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul> -->
+
+                </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-8 col-xl-8 pl-md-3 px-lg-auto px-0 border-left">
+
+                <app-chat *ngIf="chatId" [chatId]="chatId"></app-chat>
+
+                <div *ngIf="!chatId" class="py-5 text-center new-chat-wrapper">
+                    <h1 class="mb-0 mt-5">
+                        <i class="fas fa-comments"></i>
+                    </h1>
+                    <h5 class="px-5 mt-2">
+                        Search for a colleague to start chatting with or resume a chat
+                    </h5>
+
+                </div>
+
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+</div>

@@ -1,0 +1,49 @@
+@import './../../../../../theme';
+
+/* The heart of the matter */
+.testimonial-group {
+  .row {
+    overflow-x: auto;
+    margin: 20px;
+    white-space: nowrap;
+    display: block;
+    .col-xs-4 {
+      display: inline-block;
+      float: none;
+      padding: 10px;
+      width: 440px;
+    }
+  }
+}
+
+.lane {
+  min-height: 650px;
+  width: 400px;
+  float: left;
+  margin: 1em;
+  cursor: grab;
+  border: 1px solid #ccc;
+  border-top: 5px solid lightskyblue;
+  background-color: #f2f2f2;
+  &.add-column {
+    min-height: 50px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  .card {
+    margin: 5px 0;
+    border-left: 5px solid $secondary;
+    .card-body {
+      .title {
+        font-size: 18px;
+      }
+      .deadline {
+        font-size: 13px;
+      }
+      .assigned {
+        font-size: 12px;
+      }
+    }
+  }
+}

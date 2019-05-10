@@ -1,0 +1,26 @@
+<form #form="ngForm" [formGroup]="expenseForm" (submit)="create(form)">
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Expense" formControlName="expense">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Cost" formControlName="cost">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <button class="btn btn-sm btn-secondary" (click)="closeDialog()">Close</button>
+    <button class="btn btn-sm btn-success" type="submit">Save Expense</button>
+  </div>
+
+</form>

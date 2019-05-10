@@ -1,0 +1,117 @@
+<div>
+  <h4 class="underlined pl-3">{{ data.task ? 'Edit' : 'Add new' }} Task</h4>
+  <mat-vertical-stepper linear="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>What needs to be done?</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="What needs to be done?"
+            formControlName="title"
+          />
+          <mat-hint align="start">Eg : Design the logo</mat-hint>
+          <mat-error *ngIf="firstFormGroup.controls.title.invalid"
+            >This field is mandatory</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Provide a detailed description for this task (Optional)"
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
+        <div>
+          <button class="btn btn-sm btn-outline-success" matStepperNext>
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Who all should do this?</ng-template>
+
+        <h6 class="underlined mb-4">Project Members</h6>
+        <div class="people-avatar-container">
+          <figure
+            *ngFor="let member of members"
+            class="user-badge"
+            (click)="addPerson(member.userId)"
+          >
+            <i
+              *ngIf="
+                secondFormGroup.value['people'] != null
+                  ? secondFormGroup.value['people'].indexOf(member.userId) > -1
+                  : false
+              "
+              class="fas fa-check-circle"
+            ></i>
+            <img [appUserAvatar]="member.userId" />
+            <p [appUserName]="member.userId" class="text-center mt-1"></p>
+          </figure>
+        </div>
+
+        <div class="mt-3">
+          <button class="btn btn-sm btn-outline-success mr-1" matStepperNext>
+            Next
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" matStepperPrevious>
+            Back
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>When is the deadline?</ng-template>
+        <mat-form-field>
+          <input
+            readonly
+            matInput
+            [matDatepicker]="startPicker"
+            placeholder="Start | Click on the Calendar"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+          <mat-error *ngIf="thirdFormGroup.controls.deadline.invalid"
+            >This field is mandatory</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            readonly
+            matInput
+            [matDatepicker]="endPicker"
+            placeholder="End | Click on the Calendar"
+            formControlName="deadline"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="endPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+          <mat-error *ngIf="thirdFormGroup.controls.deadline.invalid"
+            >This field is mandatory</mat-error
+          >
+        </mat-form-field>
+        <div>
+          <button
+            class="btn btn-sm btn-outline-success mr-1"
+            (click)="addTask()"
+          >
+            Save
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="close()">
+            Close
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

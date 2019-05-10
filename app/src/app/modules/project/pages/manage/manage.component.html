@@ -1,0 +1,85 @@
+<div class="row" *ngIf="project">
+  <div class="col-6">
+    <h1 class="my-4">{{ project.title }}</h1>
+  </div>
+  <div class="col-6">
+    <p *ngIf="project.lastActivityAt" class="text-right === true mt-3 pt-4">
+      <small>
+        Last activity
+        {{ project.lastActivityAt.seconds | amFromUnix | amTimeAgo }}
+      </small>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'overview']"
+          class="nav-link"
+          >Overview</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="['/project/manage', projectId, 'tasks']"
+          class="nav-link"
+          >Tasks</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'chat']"
+          class="nav-link"
+          >Chat</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'files']"
+          class="nav-link"
+          >Files</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'diaries']"
+          class="nav-link"
+          >Diaries</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'time']"
+          class="nav-link"
+          >Time</a
+        >
+      </li>
+      <!-- <li class="nav-item" *ngIf="userRole == 'Administrator' || userRole == 'Manager'">
+        <a routerLinkActive="active" [routerLink]="['/project/manage', projectId, 'billing']" class="nav-link d-flex align-items-center justify-content-between">Billing <span class="badge badge-pill badge-info ml-2">beta</span></a>
+      </li> -->
+      <li
+        class="nav-item"
+        *ngIf="userRole == 'Administrator' || userRole == 'Manager'"
+      >
+        <a
+          routerLinkActive="active"
+          [routerLink]="['/project/manage', projectId, 'settings']"
+          class="nav-link"
+          >Settings</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet (activate)="onActivate($event)"></router-outlet>

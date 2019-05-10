@@ -1,0 +1,35 @@
+<h4>Save Invoice</h4>
+
+<form #form="ngForm" [formGroup]="invoiceForm" (submit)="create(form)" class="invoice">
+  <mat-form-field class="example-form">
+    <input matInput placeholder="Invoice no./ID" formControlName="invoiceId" />
+  </mat-form-field>
+
+  <mat-form-field class="example-form">
+    <input matInput [matDatepicker]="picker" formControlName="issueDate" readonly placeholder="Choose a date" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-form">
+    <input type="text" matInput placeholder="Currency" aria-label="Number" formControlName="currency" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field >
+    <input matInput placeholder="Final Price" formControlName="finalPrice" type="number" class="example-right-align">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <button class="btn btn-sm btn-secondary" (click)="closeDialog()">
+      Close
+    </button>
+    <button class="btn btn-sm btn-success" type="submit">Add Invoice</button>
+  </div>
+</form>

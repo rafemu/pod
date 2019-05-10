@@ -1,0 +1,125 @@
+<!-- <ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template> -->
+
+<div class="row mt-4">
+  <div class="col-md-2">
+    <h5 class="underlined">My Projects</h5>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let project of projects" class="list-group-item">
+        <mat-checkbox checked="true"
+          ><span [appProjectName]="project.projectId"></span
+        ></mat-checkbox>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-10">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-sm btn-primary">
+            Previous
+          </div>
+          <div class="btn btn-sm btn-outline-secondary">
+            Today
+          </div>
+          <div class="btn btn-sm btn-primary">
+            Next
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>{{ viewDate | amDateFormat: 'MMMM YYYY' }}</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div
+            class="btn btn-sm"
+            (click)="view = CalendarView.Month"
+            [ngClass]="
+              view === CalendarView.Month
+                ? 'btn-outline-secondary'
+                : 'btn-primary'
+            "
+          >
+            Month
+          </div>
+          <div
+            class="btn btn-sm"
+            (click)="view = CalendarView.Week"
+            [ngClass]="
+              view === CalendarView.Week
+                ? 'btn-outline-secondary'
+                : 'btn-primary'
+            "
+          >
+            Week
+          </div>
+          <div
+            class="btn btn-sm"
+            (click)="view = CalendarView.Day"
+            [ngClass]="
+              view === CalendarView.Day
+                ? 'btn-outline-secondary'
+                : 'btn-primary'
+            "
+          >
+            Day
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view
+        *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view
+        *ngSwitchCase="CalendarView.Week"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view
+        *ngSwitchCase="CalendarView.Day"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-day-view>
+    </div>
+  </div>
+</div>

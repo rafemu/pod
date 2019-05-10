@@ -1,0 +1,141 @@
+<div class="row mt-4">
+  <div class="col-12">
+    <h3 class="underlined">Settings</h3>
+  </div>
+ 
+</div>
+
+<hr>
+
+<div class="row mt-4">
+
+  <div class="col-12">
+    <h5 class="underlined">Profile</h5>
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="card avatar-card text-white" *ngIf="project">
+
+      <img class="card-img" [src]="project.projectImage || '/assets/project-profile.png'">
+
+      <input id="fileInput" hidden type="file" (change)="uploadProjectImage($event.target.files)">
+
+      <div class="card-img-overlay">
+        <button class="btn btn-sm btn-outline-default" type="button" (click)="selectImage()">Change Image</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 mt-2">
+
+    <form [formGroup]="projectUpdateForm" #form="ngForm" (submit)="updateProjectDetail(form)">
+
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" formControlName="title" placeholder="Title">
+        <mat-error *ngIf="projectUpdateForm.controls['title'].errors?.required">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" formControlName="caption" placeholder="Caption">
+        <mat-error *ngIf="projectUpdateForm.controls['caption'].errors?.required">
+          Caption is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="A long description maybe (Optional)" formControlName="description"></textarea>
+        <mat-error *ngIf="projectUpdateForm.controls['description'].errors?.required">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <button color="primary" type="submit" class="btn btn-outline-primary">
+        {{isProjectUpdating ? 'Updating...' :'Update'}}
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-6">
+    <h5 class="underlined">People</h5>
+  </div>
+  <div class="col-6" *ngIf="!showAddOrRemovePeopleDiv">
+    <button class="btn btn-outline-primary float-right" (click)="showAddOrRemovePeopleDiv = !showAddOrRemovePeopleDiv">Add / Remove people</button>
+  </div>
+  <div class="col-6" *ngIf="showAddOrRemovePeopleDiv">
+    <button class="btn btn-outline-success float-right" [disabled]="isSavingPeople" (click)="savePeoples()">{{ isSavingPeople ? 'Saving...' : 'Save'}}</button>
+    <button class="btn btn-outline-secondary float-right mr-1" (click)="hideAddOrRemoveSection()">Cancel</button>    
+  </div>
+
+  <div class="col-12 mt-2">
+    <div class="people-avatar-container">
+      <figure class="user-badge" *ngFor="let user of projectPeople" (click)="addOrRemovePeople(user.userId)">
+        <img [appUserAvatar]="user.userId" />
+        <p [appUserName]="user.userId" class="text-center mt-1"></p>
+      </figure>
+    </div>
+    <div *ngIf="!projectPeople">
+      <p>No users? Wierd...</p>
+    </div>
+  </div>
+  <div class="col-12 border-top pt-2" *ngIf="showAddOrRemovePeopleDiv">
+    <!-- <p class="text-muted">Info : All the administrators would have access to every project by default, hence they are excluded in this list.</p> -->
+    <div class="people-avatar-container">
+      <figure class="user-badge" *ngFor="let user of people" (click)="addOrRemovePeople(user.userId)">
+        <img [appUserAvatar]="user.userId" />
+        <p [appUserName]="user.userId" class="text-center mt-1"></p>
+      </figure>
+    </div>
+    <div *ngIf="!people.length">
+      <p>Ohh oh! No more users to add.</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- <div class="row mt-4" *ngIf="userRole == 'Administrator'">
+  <div class="col-12">
+    <h5 class="underlined">Housekeeping</h5>
+  </div>
+  <div class="col-6">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard
+      dummy text ever since the 1500s, when an unknown.
+    </p>
+    <button class="btn btn-danger mr-2">Clear all time logs</button>
+  </div>
+
+  <div class="col-6">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard
+      dummy text ever since the 1500s, when an unknown.
+    </p>
+    <button class="btn btn-warning">Clear all Chats</button>
+  </div>
+  <hr>
+</div> -->
+
+
+
+<div class="row mt-4" *ngIf="userRole == 'Administrator'">
+  <div class="col-12">
+    <!-- <h5 class="underlined">Manage</h5> -->
+  </div>
+  <div class="col-12">
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard
+      dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+      specimen
+      book.
+    </p> -->
+    <button class="btn btn-danger float-right" (click)="deleteProject()">Delete this Project</button>
+    <button class="btn btn-warning float-right mr-2" (click)="archiveProject()">{{projectStatus == 'active'? 'Archive this Project' : 'Move to active projects'}}</button>
+  </div>
+</div>

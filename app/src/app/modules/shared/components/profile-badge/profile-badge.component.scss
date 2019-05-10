@@ -1,0 +1,20 @@
+figure {
+  max-width: 64px;
+  position: relative;
+  display: inline-block;
+  margin-right: 25px;
+  i {
+    color: green;
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+  }
+  img {
+    border-radius: 32px;
+    width: 64px;
+    height: 64px;
+  }
+  p {
+    line-height: 1;
+  }
+}

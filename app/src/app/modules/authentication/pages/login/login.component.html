@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm" #form="ngForm" (submit)="submitLogin(form)">
+  <img class="mb-4 mx-auto d-block" src="/assets/logo.png" height="64">
+  <h1 class="h3 mb-3 text-center font-weight-normal">Sign in</h1>
+  <mat-form-field>
+    <input matInput type="email" placeholder="Email Address" formControlName="email">
+    <mat-error *ngIf="loginForm.controls['email'].errors?.email && !loginForm.controls['email'].errors?.required">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls['email'].errors?.required">
+      Email is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="password" formControlName="password" placeholder="Password">
+    <mat-error *ngIf="loginForm.controls['password'].errors?.required">
+      Password is required
+    </mat-error>
+  </mat-form-field>
+
+  <button class="btn mt-2 btn-md btn-primary btn-block" type="submit">
+    {{ isLoginInProgress ? 'Signing in...' : 'Sign in'}}
+  </button>
+
+  <div class="text-center mt-3">
+    <!-- <a routerLink="/auth/register">Register</a> -->
+    <a routerLink="/auth/reset-password">Reset Password</a>
+  </div>
+
+  <p class="mt-2 mb-1 text-muted text-center">
+    <small>&copy; 2018 All Rights Reserved</small>
+  </p>
+</form>

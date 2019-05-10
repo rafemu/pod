@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">
+    <div class="media">
+      <img class="mr-3" [appUserAvatar]="person.uId" alt="Generic placeholder image">
+      <div class="media-body mt-3">
+        <h6 class="mb-0"><a [routerLink]="['/people/profile',person.uId]">{{person.firstName}} {{person.lastName}}</a></h6>
+        <p class="mb-0">
+          <small>
+            {{person.designation || 'No designation'}}
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>
+      <i class="fas fa-envelope"></i>
+      <span>{{person.email}}</span>
+    </p>
+    <p>
+      <i class="fas fa-mobile"></i>
+      <span>{{person.mobile || 'N/A'}}</span>
+    </p>
+    <!-- <p>
+      <i class="fas fa-user-clock"></i>
+      <span>Last activity : 4 mins ago</span>
+    </p> -->
+
+  </div>
+</div>

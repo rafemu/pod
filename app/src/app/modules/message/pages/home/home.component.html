@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<section class="center-aligned">
+  <mat-card>
+    <!-- <img mat-card-image src="/assets/download.jpg" alt="Authentix Logo"> -->
+    <mat-card-header>
+      Shout Box
+    </mat-card-header>
+    <mat-card-content>
+      <section #messageContainer>
+        <div *ngIf="shoutBox.loading === true">Loading...</div>
+        <div *ngIf="shoutBox.loading === false">
+          <div *ngIf="shoutBox.empty === true">It's haunted in here. Shed some light. Send a message</div>
+          <div *ngFor="let message of messages" class="message-item">
+            <p [ngClass]="{'me' : userId === message.creatorUID}">{{message.text}}
+              <small>{{message.createdAt | amTimeAgo}}</small>
+            </p>
+          </div>
+
+        </div>
+      </section>
+    </mat-card-content>
+    <mat-card-footer>
+      <form [formGroup]="sendMessageForm" #form="ngForm" (submit)="insertIntoMessage()">
+
+        <mat-form-field>
+          <input minlength="5" maxlength="100" matInput type="text" formControlName="message" placeholder="Type in the message">
+        </mat-form-field>
+        <div class="button-wrapper">
+          <button mat-raised-button color="primary">Send</button>
+        </div>
+
+
+      </form>
+
+    </mat-card-footer>
+  </mat-card>
+</section>

@@ -1,0 +1,24 @@
+td {
+  font-size: 13px;
+  i {
+    font-size: 20px;
+    cursor: pointer;
+    &.fa-check-circle {
+      color: green;
+    }
+    &.fa-times-circle {
+      color: maroon;
+    }
+  }
+  &.edit-coloumn {
+    i {
+      display: none;
+      font-size: 14px;
+    }
+    &:hover {
+      i {
+        display: block;
+      }
+    }
+  }
+}

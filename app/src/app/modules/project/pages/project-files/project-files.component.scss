@@ -1,0 +1,14 @@
+@import './../../../../../theme';
+.list-group-item {
+    .file-name {}
+    .meta {
+        color: $secondary;
+        font-size: 12px;
+    }
+}
+
+.empty-files {
+    h4 {
+        font-size: 84px;
+    }
+}
